@@ -53,18 +53,6 @@ Export your database so it can be restored on another machine:
 1. In PHPMyAdmin, select `news_db` and go to **Export → Quick → SQL**
 2. Overwrite `src/sql/news.sql` with the downloaded file
 
-## Moving Between Machines
-
-Your `src/` folder contains everything needed to restore your work: PHP, HTML, CSS, and the `src/sql/news.sql` database file.
-
-Before leaving a lab, you can copy your `src/` folder to OneDrive. On the next machine:
-
-1. Download the base project
-2. Replace its `src/` folder with your copy from OneDrive
-3. Run `docker compose up -d`
-
-The database will be restored automatically from your `src/sql/news.sql` file.
-
 ## Making Database Changes
 
 To add a column or a new table after the initial setup:
