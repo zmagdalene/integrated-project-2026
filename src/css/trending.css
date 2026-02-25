@@ -1,0 +1,30 @@
+.graphicLine2 {
+    background-color: #808080;
+    height: 1px;
+    margin: 15px 0px;
+}
+
+.story {}
+
+.content .category {
+    color: #C95252;
+    font-family: "Inria Serif", sans-serif;
+    font-style: italic;
+    letter-spacing: 1px;
+    gap: 5px;
+    display: flex;
+}
+
+.category h4.author {
+    color: #808080;
+}
+
+.content .story h3 {
+    font-size: 30px;
+    font-weight: 400;
+    margin-bottom: 0;
+}
+
+.trendingComp2 h3 {
+    font-size: 10px;
+}
