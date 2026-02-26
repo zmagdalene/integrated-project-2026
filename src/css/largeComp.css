@@ -1,0 +1,118 @@
+.largeComp {
+    height: fit-content;
+    display: flex;
+}
+
+.largeComp .newsComp3 {
+    padding-bottom: 20px;
+    display: flex;
+    align-self: flex-end;
+}
+
+.largeComp .newsComp3 .textHolder {
+    gap: 20px;
+}
+
+.largeComp .newsComp3 .graphicLine2 {
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+.largeComp .newsComp3 .text {
+    height: 180px;
+    display: flex;
+    justify-content: space-between;
+    flex-flow: column wrap;
+}
+
+.largeComp .newsComp3 h2 {
+    font-size: 40px;
+}
+
+.largeComp .newsComp3 p {
+    color: #505050;
+}
+
+.largeComp .newsComp3 p.author {
+    color: #404040;
+}
+
+.largeComp .todayComp {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.largeComp .todayComp .styles {
+    width: 620px;
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+}
+
+.largeComp .todayComp .graphicLine3 {
+    background-color: #F5F5F5;
+    width: 1px;
+    height: 320px;
+}
+
+.image {
+    display: flex;
+    align-items: flex-end;
+    flex-flow: column wrap;
+}
+
+.image h1 {
+    font-family: "Inria Serif", sans-serif;
+    font-weight: 700;
+    line-height: 0.2;
+}
+
+.image .graphicLine2 {
+    background-color: #f5f5f5;
+    width: 55%;
+}
+
+.image img {
+    width: 100%;
+    height: auto;
+}
+
+.largeComp .trendingComp2 {
+    height: fit-content;
+    display: flex;
+    align-self: center;
+    flex-flow: column wrap;
+}
+
+.largeComp .trendingComp2 .content {
+    gap: 0px;
+}
+
+.largeComp .trendingComp2 .graphicLine {
+    margin: 0px;
+}
+
+.largeComp .trendingComp2 h3 {
+    font-size: 15px;
+}
+
+.largeComp .trendingComp2 h3.title2 {
+    font-size: 25px;
+    font-style: normal;
+}
+
+.largeComp .trendingComp2 h4 {
+    font-size: 10px;
+    margin-bottom: 5px;
+}
+
+.trendingComp2 .graphicLine2 {
+    background-color: #F5F5F5;
+    margin: 0px;
+}
+
+.largeComp p {
+    font-family: "Inria Serif", "sans-serif";
+    font-style: italic;
+}

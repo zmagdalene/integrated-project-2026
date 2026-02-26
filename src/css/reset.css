@@ -98,7 +98,7 @@ li {
 }
 
 body {
-    font-family: 'Public Sans', sans-serif;
+    /* font-family: "Public Sans", sans-serif; */
     color: var(--mainBlue);
     width: 100%;
     margin: 0 auto;
