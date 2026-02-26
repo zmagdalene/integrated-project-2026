@@ -192,7 +192,7 @@ class Story
 
     public static function findAll($options = NULL)
     {
-        $sql = "SELECT * FROM stories";
+        $sql = "SELECT * FROM stories ORDER BY RAND()";
         $params = [];
 
         $stories = Story::find($sql, $params, $options);

@@ -3,9 +3,7 @@ require_once "./lib/config.php";
 require_once "./lib/global.php";
 
 try {
-    $stories = Story::findAll($options = ['limit' => 3, 'offset' => 1]);
-    $category = Category::findAll();
-    $author = Author::findAll();
+    $stories = Story::findAll($options = ['limit' => 4]);
 } catch (Exception $e) {
     echo $e->getMessage();
     exit();
@@ -27,9 +25,10 @@ try {
             <div class="width-4 newsComp">
                 <li>
                     <a href="">
-                        <p class="category">TECH</p>
+                        <?php $category = Category::findById($s->category_id); ?>
+                        <p class="category"><?= h($category->name) ?></p>
                         <div class="content">
-                            <img src="images/01_Memory_Stocks_soar_as_investors_hunt_for_new_AI_winners.jpg" alt="1">
+                            <img src="/<?= $s->img_url ?>" alt="1">
 
                             <div class="textHolder">
 
@@ -41,7 +40,8 @@ try {
                                     <div class="graphicLine">
                                     </div>
                                     <p><?= h($s->subheadline) ?></p>
-                                    <p class="author"><?= h($author->first_name) ?></p>
+                                    <?php $author = Author::findById($s->author_id); ?>
+                                    <p class="author">- <?= h($author->first_name . " " . $author->last_name) ?></p>
                                 </div>
 
                             </div>
@@ -291,69 +291,27 @@ try {
                     <h3 class="title2">Trending</h3>
 
                     <ul>
-                        <li>
-                            <div class="content">
-                                <div class="graphicLine2"></div>
-                                <a href="">
-                                    <div class="story">
-                                        <div class="category">
-                                            <h4>BUSINESS</h4>
-                                            <h4 class="author">/ MARY MCKENNA</h4>
-                                        </div>
-                                        <h3>IT, Finance and Construction Lead Irish Salary Rankings</h3>
-                                        <p class="time">2h ago</p>
-                                    </div>
-                                </a>
-                            </div>
-                        </li>
+                        <?php foreach ($stories as $s) { ?>
+                            <li>
 
-                        <li>
-                            <div class="content">
-                                <div class="graphicLine2"></div>
-                                <a href="">
-                                    <div class="story">
-                                        <div class="category">
-                                            <h4>GOVERNMENT</h4>
-                                            <h4 class="author">/ ANNIECK BAO</h4>
+                                <div class="content">
+                                    <div class="graphicLine2"></div>
+                                    <a href="">
+                                        <div class="story">
+                                            <div class="category">
+                                                <?php $category = Category::findById($s->category_id) ?>
+                                                <h4><?= $category->name ?></h4>
+                                                <?php $author = Author::findById($s->author_id) ?>
+                                                <h4 class="author">/ <?= $author->first_name . " " . $author->last_name ?></h4>
+                                            </div>
+                                            <h3><?= $s->short_headline ?></h3>
+                                            <p class="time">2h ago</p>
                                         </div>
-                                        <h3>Britain and China Accelerate Business Deals Amid Diplomatic Thaw</h3>
-                                        <p class="time">4h ago</p>
-                                    </div>
-                                </a>
-                            </div>
-                        </li>
+                                    </a>
+                                </div>
 
-                        <li>
-                            <div class="content">
-                                <div class="graphicLine2"></div>
-                                <a href="">
-                                    <div class="story">
-                                        <div class="category">
-                                            <h4>TECH</h4>
-                                            <h4 class="author">/ JULIE BOORSTIN</h4>
-                                        </div>
-                                        <h3>SoftBank Unit Teams Up With Intel on AI Memory</h3>
-                                        <p class="time">2m ago</p>
-                                    </div>
-                                </a>
-                            </div>
-                        </li>
-
-                        <li>
-                            <div class="content">
-                                <div class="graphicLine2"></div>
-                                <a href="">
-                                    <div class="story">
-                                        <div class="category">
-                                            <h4>ENERGY</h4>
-                                            <h4 class="author">/ KATIE BRIGHAM</h4>
-                                        </div>
-                                        <h3>How nuclear power will drive our energy future</h3>
-                                        <p class="time">1h ago</p>
-                                    </div>
-                                </a>
-                            </div>
-                        </li>
+                            </li>
+                        <?php } ?>
                     </ul>
                 </div>
 

@@ -48,6 +48,7 @@ p.category {
     font-family: "Inria Serif", monospace;
     font-weight: 700;
     font-style: normal;
+    text-transform: uppercase;
     margin-bottom: 5px;
 }
 
