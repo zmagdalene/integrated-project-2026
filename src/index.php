@@ -1,10 +1,12 @@
 <?php
 require_once "./lib/config.php";
+require_once "./lib/global.php";
 
 try {
-    $stories = Story::findAll($options = ['limit' => 3]);
-}
-catch (Exception $e) {
+    $stories = Story::findAll($options = ['limit' => 3, 'offset' => 1]);
+    $category = Category::findAll();
+    $author = Author::findAll();
+} catch (Exception $e) {
     echo $e->getMessage();
     exit();
 }
@@ -14,24 +16,7 @@ catch (Exception $e) {
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inria+Serif:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
-        rel="stylesheet">
-
-    <link rel="stylesheet" href="css/all.min.css">
-    <link rel="stylesheet" href="css/reset.css">
-    <link rel="stylesheet" href="css/grid.css">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/newsComp.css">
-    <link rel="stylesheet" href="css/trending.css">
-    <link rel="stylesheet" href="css/largeComp.css">
-
+    <?php include './lib/head_Content.php' ?>
     <title>Newspaper</title>
 </head>
 
@@ -39,35 +24,31 @@ catch (Exception $e) {
     <div class="container">
 
         <?php foreach ($stories as $s) { ?>
-        <div class="width-4 newsComp">
-            <li>
-                <a href="">
-                    <p class="category">TECH</p>
-                    <div class="content">
-                        <img src="images/01_Memory_Stocks_soar_as_investors_hunt_for_new_AI_winners.jpg" alt="1">
+            <div class="width-4 newsComp">
+                <li>
+                    <a href="">
+                        <p class="category">TECH</p>
+                        <div class="content">
+                            <img src="images/01_Memory_Stocks_soar_as_investors_hunt_for_new_AI_winners.jpg" alt="1">
 
-                        <div class="textHolder">
+                            <div class="textHolder">
 
-                            <div class="title">
-                                <h2>Memory stocks soar as investors hunt for new AI winners</h2>
-                            </div>
-
-                            <div class="text">
-                                <div class="graphicLine">
+                                <div class="title">
+                                    <h2><?= h($s->headline) ?></h2>
                                 </div>
-                                <p>“The AI trade is no longer just about holding a basket of exposed names. The market
-                                    has
-                                    turned
-                                    more
-                                    discerning between winners and losers...”</p>
-                                <p class="author">- Rachel Rees</p>
-                            </div>
 
+                                <div class="text">
+                                    <div class="graphicLine">
+                                    </div>
+                                    <p><?= h($s->subheadline) ?></p>
+                                    <p class="author"><?= h($author->first_name) ?></p>
+                                </div>
+
+                            </div>
                         </div>
-                    </div>
-                </a>
-            </li>
-        </div>
+                    </a>
+                </li>
+            </div>
         <?php } ?>
 
         <div class="width-4 newsComp">
