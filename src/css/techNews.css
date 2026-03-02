@@ -1,0 +1,10 @@
+.title {
+    background-color: #F5F5F5;
+    width: 100%;
+    height: fit-content;
+    padding: 5px 10px 5px 10px;
+}
+
+.title h1 {
+    font-weight: 600;
+}

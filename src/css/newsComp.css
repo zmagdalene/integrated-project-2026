@@ -28,11 +28,11 @@ img {
     flex-flow: column wrap;
 }
 
-.title {
+.headline {
     min-height: 156px;
 }
 
-.title h2 {
+.headline h2 {
     font-weight: 500;
     display: flex;
     justify-content: center;
@@ -41,7 +41,7 @@ img {
 
 .text {}
 
-.graphicLine {
+.redLine {
     background-color: #c94242;
     height: 5px;
     margin-bottom: 10px;
@@ -56,7 +56,7 @@ img {
     height: fit-content;
 }
 
-.newsComp2 .graphicLine {
+.newsComp2 .redLine {
     width: 105px;
     height: 13px;
     margin-top: 5px;
@@ -70,7 +70,7 @@ img {
     margin-bottom: 0px;
 }
 
-.newsComp2 .graphicLine2 {
-   background-color: #F5F5F5;
-   gap: 10px;
+.newsComp2 .greyLine {
+    background-color: #F5F5F5;
+    gap: 10px;
 }

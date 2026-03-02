@@ -3,7 +3,7 @@ require_once "./lib/config.php";
 require_once "./lib/global.php";
 
 try {
-    $stories = Story::findAll($options = ['limit' => 4]);
+    $stories = Story::findAll($options = ['limit' => 3]);
 } catch (Exception $e) {
     echo $e->getMessage();
     exit();
@@ -243,19 +243,98 @@ try {
 
             <div class="container">
 
+                <div class="width-12 greyLine"></div>
+
+                <div class="width-12 title">
+                    <h1>TODAY'S NEWS</h1>
+                </div>
+
+                <div class="width-10 story">
+                    <div class="newsComp newsComp2 newsComp3">
+                        <li>
+                            <a href="">
+
+                                <div class="redLine"></div>
+
+                                <div class="textHolder">
+
+                                    <div class="headline">
+                                        <h2> How the IndieDev Fund Is Powering a New Wave of Irish Game Creators</h2>
+                                    </div>
+
+                                    <div class="greyLine"></div>
+
+                                    <div class="text">
+
+                                        <p>New initiative will support eight Irish developers as they prepare to launch
+                                            innovative
+                                            game prototypes aimed at international audiences...</p>
+                                        <p class="author">- Melanie Boylan</p>
+                                    </div>
+
+                                </div>
+                            </a>
+                        </li>
+                    </div>
+
+                    <div class="vertGreyLine"></div>
+
+                    <div class="todayComp">
+
+                        <div class="image">
+                            <div class="graphicLine2"></div>
+                            <img src="images/05_8_Irish_game_developers_to_launch_game_prototypes_through_pioneering_IndieDev_Fund.webp"
+                                alt="3">
+                            <p class="category">TECH</p>
+                        </div>
+
+                    </div>
+
+                    <div class="vertGreyLine"></div>
+
+                </div>
+
+                <div class="width-2 trendingComp2">
+                    <h3 class="title2">Trending</h3>
+
+                    <ul>
+                        <?php foreach ($stories as $s) { ?>
+                            <li>
+
+                                <div class="content">
+                                    <div class="graphicLine2"></div>
+                                    <a href="">
+                                        <div class="story">
+                                            <div class="category">
+                                                <?php $category = Category::findById($s->category_id) ?>
+                                                <h4><?= $category->name ?></h4>
+                                                <?php $author = Author::findById($s->author_id) ?>
+                                                <h4 class="author">/ <?= $author->first_name . " " . $author->last_name ?></h4>
+                                            </div>
+                                            <h3><?= $s->short_headline ?></h3>
+                                            <p class="time">2h ago</p>
+                                        </div>
+                                    </a>
+                                </div>
+
+                            </li>
+                        <?php } ?>
+                    </ul>
+                </div>
+
                 <div class="width-4 newsComp newsComp2 newsComp3">
                     <li>
                         <a href="">
 
-                            <div class="graphicLine"></div>
+                            <div class="redLine"></div>
 
                             <div class="textHolder">
 
-                                <div class="title">
+                                <div class="headline">
                                     <h2> How the IndieDev Fund Is Powering a New Wave of Irish Game Creators</h2>
                                 </div>
 
-                                <div class="graphicLine2"></div>
+                                <div class="greyLine"></div>
 
                                 <div class="text">
 
@@ -273,12 +352,11 @@ try {
                 <div class="width-6 todayComp">
 
                     <div class="styles">
-                        <div class="graphicLine3"></div>
-                        <div class="graphicLine3"></div>
+                        <div class="vertGreyLine"></div>
+                        <div class="vertGreyLine"></div>
                     </div>
 
                     <div class="image">
-                        <h1>TODAY'S NEWS</h1>
                         <div class="graphicLine2"></div>
                         <img src="images/05_8_Irish_game_developers_to_launch_game_prototypes_through_pioneering_IndieDev_Fund.webp"
                             alt="3">
@@ -325,101 +403,36 @@ try {
                     <h1>TECH</h1>
                 </div>
 
-                <div class="width-4 newsComp newsComp2">
+                <?php foreach ($stories as $s) { ?>
+                    <div class="width-4 newsComp newsComp2">
+                        <li>
+                            <a href="">
+                                <div class="content">
+                                    <img src="/<?= $s->img_url ?>" alt="1">
 
-                    <li>
-                        <a href="">
-                            <div class="content">
-                                <img src="images/05_8_Irish_game_developers_to_launch_game_prototypes_through_pioneering_IndieDev_Fund.webp"
-                                    alt="3">
+                                    <div class="textHolder">
 
-                                <div class="textHolder">
+                                        <div class="redLine"></div>
 
-                                    <div class="graphicLine"></div>
+                                        <div class="headline">
+                                            <h2><?= h($s->headline) ?></h2>
+                                        </div>
 
-                                    <div class="title">
-                                        <h2> How the IndieDev Fund Is Powering a New Wave of Irish Game Creators</h2>
+                                        <div class="greyLine"></div>
+
+                                        <div class="text">
+                                            <p><?= h($s->subheadline) ?></p>
+
+                                            <?php $author = Author::findById($s->author_id); ?>
+                                            <p class="author">- <?= h($author->first_name . " " . $author->last_name) ?></p>
+                                        </div>
                                     </div>
 
-                                    <div class="graphicLine2"></div>
-
-                                    <div class="text">
-
-                                        <p>New initiative will support eight Irish developers as they prepare to launch
-                                            innovative
-                                            game prototypes aimed at international audiences...</p>
-                                        <p class="author">- Melanie Boylan</p>
-                                    </div>
                                 </div>
-
-                            </div>
-                        </a>
-                    </li>
-                </div>
-
-                <div class="width-4 newsComp newsComp2">
-
-                    <li>
-                        <a href="">
-                            <div class="content">
-                                <img src="images/05_8_Irish_game_developers_to_launch_game_prototypes_through_pioneering_IndieDev_Fund.webp"
-                                    alt="3">
-
-                                <div class="textHolder">
-
-                                    <div class="graphicLine"></div>
-
-                                    <div class="title">
-                                        <h2> How the IndieDev Fund Is Powering a New Wave of Irish Game Creators</h2>
-                                    </div>
-
-                                    <div class="graphicLine2"></div>
-
-                                    <div class="text">
-
-                                        <p>New initiative will support eight Irish developers as they prepare to launch
-                                            innovative
-                                            game prototypes aimed at international audiences...</p>
-                                        <p class="author">- Melanie Boylan</p>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </a>
-                    </li>
-                </div>
-
-                <div class="width-4 newsComp newsComp2">
-
-                    <li>
-                        <a href="">
-                            <div class="content">
-                                <img src="images/05_8_Irish_game_developers_to_launch_game_prototypes_through_pioneering_IndieDev_Fund.webp"
-                                    alt="3">
-
-                                <div class="textHolder">
-
-                                    <div class="graphicLine"></div>
-
-                                    <div class="title">
-                                        <h2> How the IndieDev Fund Is Powering a New Wave of Irish Game Creators</h2>
-                                    </div>
-
-                                    <div class="graphicLine2"></div>
-
-                                    <div class="text">
-
-                                        <p>New initiative will support eight Irish developers as they prepare to launch
-                                            innovative
-                                            game prototypes aimed at international audiences...</p>
-                                        <p class="author">- Melanie Boylan</p>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </a>
-                    </li>
-                </div>
+                            </a>
+                        </li>
+                    </div>
+                <?php } ?>
             </div>
         </div>
 
