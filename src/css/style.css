@@ -5,19 +5,26 @@ body {
     line-height: 1.2em;
 }
 
+img {
+    width: 100%
+}
+
 h1,
 h2,
-h3 {
+h3,
+h4,
+h5 {
     line-height: 1;
 }
 
 h1 {
     font-size: 40px;
-    margin-bottom: 10px;
+
 }
 
 h2 {
-    font-size: 35px;
+    font-size: 39px;
+    font-weight: 500;
     margin-bottom: 10px;
 }
 
@@ -26,26 +33,32 @@ h3 {
     margin-bottom: 10px;
 }
 
-h3.title2 {
-    font-family: "Inria Serif", sans-serif;
-    font-style: italic;
+h4 {
+    font-size: 16px;
+    margin-bottom: 10px;
 }
 
-h4 {
-    font-size: 15px;
-    margin-bottom: 10px;
+h5 {
+    font-size: 22px;
+    margin-bottom: 0px;
+    margin-top: 0px;
+}
+
+h6 {
+    font-size: 12px;
+    margin-bottom: 0px;
+    margin-top: 0px;
 }
 
 p {
     font-family: "Inria Serif", sans-serif;
     font-size: 15px;
-    letter-spacing: 0.5px;
     line-height: 20px;
     font-style: italic;
+    margin-bottom: 5px;
 }
 
 p.category {
-    font-family: "Inria Serif", monospace;
     font-weight: 700;
     font-style: normal;
     text-transform: uppercase;
@@ -59,7 +72,7 @@ p.author {
     font-weight: 600;
 }
 
-.story .time {
+.time {
     color: #808080;
     font-family: "Inria serif", sans-serif;
     font-size: 10px;
@@ -68,11 +81,56 @@ p.author {
     justify-content: flex-end;
 }
 
-li {
+.greyLine {
+    background-color: #F5F5F5;
     width: 100%;
+    height: 1px;
+    margin-top: 5px;
+    margin-bottom: 10px;
 }
 
-a {
+.title {
+    background-color: #d6d6d6;
     display: flex;
-    flex-flow: column wrap;
+    justify-content: end;
+    align-items: center;
+    padding: 10px 100px;
+}
+
+.mainStory {
+    display: flex;
+    gap: 20px;
+}
+
+.mainStory .text {
+    flex: 2
+}
+
+.mainStory .pic {
+    flex: 4;
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+}
+
+.redLine {
+    background-color: #c94242;
+    height: 17px;
+    width: 100px;
+    margin-bottom: 10px;
+}
+
+.trending .story {
+    border-top: 1px solid grey;
+    padding-bottom: 20px;
+    padding-top: 6px;
+}
+
+.trending .category {
+    display: flex;
+    margin-bottom: 10px;
+}
+
+.trending h6.author {
+    color: red;
 }

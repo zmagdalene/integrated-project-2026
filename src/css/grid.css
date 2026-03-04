@@ -5,8 +5,8 @@
     margin: auto;
     display: grid;
     grid-template-columns: repeat(12, 1fr);
-    grid-column-gap: 2em;
-    grid-row-gap: 1em;
+    grid-column-gap: 20px;
+    grid-row-gap: 10px;
     grid-row: auto;
 }
 
