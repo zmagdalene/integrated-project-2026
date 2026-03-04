@@ -1,5 +1,5 @@
 body {
-    background-color: #ffffff;
+    background-color: #FFFFFF;
     font-family: "Playfair Display", sans-serif;
     font-weight: 400;
     line-height: 1.2em;
@@ -18,14 +18,16 @@ h5 {
 }
 
 h1 {
+    font-family: "Inria Serif", sans-serif;
     font-size: 40px;
 
 }
 
 h2 {
     font-size: 39px;
-    font-weight: 500;
+    font-weight: 400;
     margin-bottom: 10px;
+    min-height: 195px;
 }
 
 h3 {
@@ -34,12 +36,15 @@ h3 {
 }
 
 h4 {
-    font-size: 16px;
+    font-family: "Inria Serif", sans-serif;
+    font-size: 20px;
     margin-bottom: 10px;
 }
 
 h5 {
-    font-size: 22px;
+    color: #404040;
+    font-size: 15px;
+    font-weight: 400;
     margin-bottom: 0px;
     margin-top: 0px;
 }
@@ -51,6 +56,7 @@ h6 {
 }
 
 p {
+    color: #505050;
     font-family: "Inria Serif", sans-serif;
     font-size: 15px;
     line-height: 20px;
@@ -66,6 +72,7 @@ p.category {
 }
 
 p.author {
+    color: #404040;
     font-family: "Inria Serif", sans-serif;
     font-size: 12px;
     font-style: normal;
@@ -77,6 +84,7 @@ p.author {
     font-family: "Inria serif", sans-serif;
     font-size: 10px;
     font-weight: 600;
+    margin-top: 0px;
     display: flex;
     justify-content: flex-end;
 }
@@ -90,20 +98,29 @@ p.author {
 }
 
 .title {
-    background-color: #d6d6d6;
+    background-color: #F5F5F5;
+    margin-bottom: 20px;
+    padding: 10px 15px;
     display: flex;
-    justify-content: end;
+    justify-content: flex-end;
     align-items: center;
-    padding: 10px 100px;
+}
+
+.left {
+    justify-content: flex-start;
 }
 
 .mainStory {
-    display: flex;
-    gap: 20px;
+    height: fit-content;
 }
 
-.mainStory .text {
-    flex: 1
+.mainStory a {
+    gap: 20px;
+    display: flex;
+}
+
+.mainStory .content {
+    flex: 1;
 }
 
 .mainStory .pic {
@@ -111,6 +128,21 @@ p.author {
     display: flex;
     flex-direction: column;
     align-items: end;
+}
+
+.mainStory .textHolder {
+    height: 100%;
+}
+
+.mainStory .text {
+    border-top: 1px solid #F5F5F5;
+    padding-bottom: 20px;
+    padding-top: 6px;
+}
+
+h6.author {
+    display: flex;
+    justify-content: flex-end;
 }
 
 .redLine {
@@ -121,16 +153,39 @@ p.author {
 }
 
 .trending .story {
-    border-top: 1px solid grey;
+    border-top: 1px solid #F5F5F5;
+    padding: 10px 0px;
+}
+
+.trending .category {
+    color: #C95252;
+    gap: 4px;
+    margin-bottom: 5px;
+    display: flex;
+}
+
+.trending h6.author {
+    color: #808080;
+}
+
+.newsComp .content {}
+
+.newsComp img {
+    height: 200px;
+    margin-bottom: 10px;
+}
+
+.newsComp .textHolder {
+    margin-top: 5px;
+}
+
+.newsComp .text {
+    border-top: 1px solid #F5F5F5;
     padding-bottom: 20px;
     padding-top: 6px;
 }
 
-.trending .category {
+.personalFinance .trending {
     display: flex;
-    margin-bottom: 10px;
-}
-
-.trending h6.author {
-    color: red;
+    flex-flow: column wrap;
 }
