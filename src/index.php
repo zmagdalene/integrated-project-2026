@@ -33,7 +33,7 @@ try {
             <h1>TODAY'S NEWS</h1>
         </div>
 
-        <div class="width-9 mainStory">
+        <div class="width-10 mainStory">
 
             <?php foreach ($topStory as $s) { ?>
                 <div class="text">
@@ -71,7 +71,7 @@ try {
             <?php } ?>
         </div>
 
-        <div class="width-3 trending">
+        <div class="width-2 trending">
             <h4>Trending</h4>
 
 
@@ -135,11 +135,6 @@ try {
         <?php } ?>
 
     </div>
-
-
-
-
-
 
 </body>
 
