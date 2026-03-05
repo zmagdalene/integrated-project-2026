@@ -19,7 +19,7 @@ try {
 
     $financeStories = Story::findAll($options = ['limit' => 4]);
 
-    $financeStories = Story::findAll($options = ['limit' => 4, 'offset' => 4]);
+    $financeStories2 = Story::findAll($options = ['limit' => 4, 'offset' => 4]);
 
     $category = Category::findAll();
     $author = Author::findAll();
@@ -52,7 +52,7 @@ try {
 
             <?php foreach ($topStory as $s) { ?>
 
-                <a href="">
+                <a href="view_story.php">
                     <div class="content">
 
                         <div class="redLine"></div>
@@ -90,7 +90,7 @@ try {
 
                 <div class="story">
 
-                    <a href="">
+                    <a href="view_story.php">
 
                         <div class="category">
                             <?php $category = Category::findById($s->category_id) ?>
@@ -122,7 +122,7 @@ try {
         <?php foreach ($techStories as $s) { ?>
             <div class="width-4 newsComp">
 
-                <a href="">
+                <a href="view_story.php">
                     <div class="content">
                         <img src="/<?= $s->img_url ?>" alt="1">
 
@@ -157,7 +157,7 @@ try {
         <?php foreach ($businessStories as $s) { ?>
             <div class="width-4 newsComp">
 
-                <a href="">
+                <a href="view_story.php">
                     <div class="content">
                         <img src="/<?= $s->img_url ?>" alt="1">
 
@@ -193,7 +193,7 @@ try {
 
             <?php foreach ($topStockStory as $s) { ?>
 
-                <a href="">
+                <a href="view_story.php">
                     <div class="content">
 
                         <div class="redLine"></div>
@@ -231,7 +231,7 @@ try {
 
                 <div class="story">
 
-                    <a href="">
+                    <a href="view_story.php">
 
                         <div class="category">
                             <?php $category = Category::findById($s->category_id) ?>
@@ -263,7 +263,7 @@ try {
         <?php foreach ($energyStories as $s) { ?>
             <div class="width-4 newsComp">
 
-                <a href="">
+                <a href="view_story.php">
                     <div class="content">
                         <img src="/<?= $s->img_url ?>" alt="1">
 
@@ -299,22 +299,27 @@ try {
 
             <?php foreach ($financeStories as $s) { ?>
 
-                <div class="story">
+                <a href="view_story.php">
+                    <div class="story">
 
-                    <a href="">
+                        <img src="/<?= $s->img_url ?>">
 
-                        <div class="category">
-                            <?php $category = Category::findById($s->category_id) ?>
-                            <h6><?= $category->name ?></h6>
-                            <?php $author = Author::findById($s->author_id) ?>
-                            <h6 class="author">/ <?= $author->first_name . " " . $author->last_name ?></h6>
+                        <div class="textHolder">
+
+                            <div class="category">
+                                <?php $category = Category::findById($s->category_id) ?>
+                                <h6><?= $category->name ?></h6>
+                                <?php $author = Author::findById($s->author_id) ?>
+                                <h6 class="author">/ <?= $author->first_name . " " . $author->last_name ?></h6>
+                            </div>
+
+                            <h5><?= $s->short_headline ?></h5>
+                            <p class="time">2h ago</p>
+
                         </div>
 
-                        <h5><?= $s->short_headline ?></h5>
-                        <p class="time">2h ago</p>
-
-                    </a>
-                </div>
+                    </div>
+                </a>
 
             <?php } ?>
 
@@ -322,24 +327,29 @@ try {
 
         <div class="width-4 trending">
 
-            <?php foreach ($financeStories as $s) { ?>
+            <?php foreach ($financeStories2 as $s) { ?>
 
-                <div class="story">
+                <a href="view_story.php">
+                    <div class="story">
 
-                    <a href="">
+                        <img src="/<?= $s->img_url ?>">
 
-                        <div class="category">
-                            <?php $category = Category::findById($s->category_id) ?>
-                            <h6><?= $category->name ?></h6>
-                            <?php $author = Author::findById($s->author_id) ?>
-                            <h6 class="author">/ <?= $author->first_name . " " . $author->last_name ?></h6>
+                        <div class="textHolder">
+
+                            <div class="category">
+                                <?php $category = Category::findById($s->category_id) ?>
+                                <h6><?= $category->name ?></h6>
+                                <?php $author = Author::findById($s->author_id) ?>
+                                <h6 class="author">/ <?= $author->first_name . " " . $author->last_name ?></h6>
+                            </div>
+
+                            <h5><?= $s->short_headline ?></h5>
+                            <p class="time">2h ago</p>
+
                         </div>
 
-                        <h5><?= $s->short_headline ?></h5>
-                        <p class="time">2h ago</p>
-
-                    </a>
-                </div>
+                    </div>
+                </a>
 
             <?php } ?>
 
@@ -348,9 +358,9 @@ try {
         <?php foreach ($topStory as $s) { ?>
             <div class="width-4 newsComp">
 
-                <a href="">
+                <a href="view_story.php">
                     <div class="content">
-                        <img src="/<?= $s->img_url ?>" alt="1">
+                        <img src="/<?= $s->img_url ?>">
 
                         <div class="textHolder">
 

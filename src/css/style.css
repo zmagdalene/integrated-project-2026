@@ -89,6 +89,8 @@ p.author {
     justify-content: flex-end;
 }
 
+/* title Styles */
+
 .greyLine {
     background-color: #F5F5F5;
     width: 100%;
@@ -99,6 +101,7 @@ p.author {
 
 .title {
     background-color: #F5F5F5;
+    width: 100%;
     margin-bottom: 20px;
     padding: 10px 15px;
     display: flex;
@@ -109,6 +112,8 @@ p.author {
 .left {
     justify-content: flex-start;
 }
+
+/* width-10 mainStory */
 
 .mainStory {
     height: fit-content;
@@ -145,12 +150,16 @@ h6.author {
     justify-content: flex-end;
 }
 
+/* redLine Style */
+
 .redLine {
     background-color: #c94242;
     height: 17px;
     width: 100px;
     margin-bottom: 10px;
 }
+
+/* trendingComp */
 
 .trending .story {
     border-top: 1px solid #F5F5F5;
@@ -168,7 +177,7 @@ h6.author {
     color: #808080;
 }
 
-.newsComp .content {}
+/* width-4 newsComp */
 
 .newsComp img {
     height: 200px;
@@ -185,7 +194,20 @@ h6.author {
     padding-top: 6px;
 }
 
-.personalFinance .trending {
+/* personalFinance */
+
+.personalFinance .trending .story {
+    gap: 10px;
+    min-height: 115px;
     display: flex;
-    flex-flow: column wrap;
+    align-items: center;
+}
+
+.personalFinance .trending img {
+    width: 100px;
+    height: 60px;
+}
+
+.personalFinance .textHolder {
+    width: 100%;
 }
