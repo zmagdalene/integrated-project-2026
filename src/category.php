@@ -1,5 +1,6 @@
 <?php
 require_once "./lib/config.php";
+require_once "./lib/global.php";
 
 try {
     if (!isset($_GET["id"])) {
@@ -13,26 +14,29 @@ try {
     // $stories = Story::findByCategory($categoryId);
     $stories = Story::findByCategory($categoryId, $options = array('limit' => 3));
     // $stories = Story::findByCategory($categoryId, $options = array('limit' => 3, 'offset' => 2));
-}
-catch (Exception $e) {
+} catch (Exception $e) {
     echo $e->getMessage();
     exit();
 }
 ?>
 <html>
-    <head>
-        <title>Stories: <?= $category->name ?></title>
-    </head>
-    <body>
-        <?php require_once "./lib/navbar.php"; ?>
-        <?php require_once "./lib/flash_message.php"; ?>
-        <h1>Stories: <?= $category->name ?></h1>
-        <?php foreach ($stories as $s) { ?>
+
+<head>
+    <?php include './lib/head_Content.php' ?>
+    <title>Stories: <?= $category->name ?></title>
+</head>
+
+<body>
+    <?php require_once "./lib/navbar.php"; ?>
+    <?php require_once "./lib/flash_message.php"; ?>
+    
+    <h1>Stories: <?= $category->name ?></h1>
+    <?php foreach ($stories as $s) { ?>
         <div>
             <h2><a href="view_story.php?id=<?= $s->id ?>"><?= $s->headline ?></a></h2>
             <h3><?= $s->subheadline ?></h3>
             <div>
-            <p><?= $s->article ?></p>
+                <p><?= $s->article ?></p>
             </div>
             <p><img src="<?= $s->img_url ?>" /></p>
             <?php $author = Author::findById($s->author_id); ?>
@@ -42,6 +46,7 @@ catch (Exception $e) {
             <p>Date created: <?= $s->created_at ?></p>
             <p>Last modified: <?= $s->updated_at ?></p>
         </div>
-        <?php } ?>
-    </body>
+    <?php } ?>
+</body>
+
 </html>

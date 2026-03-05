@@ -38,6 +38,16 @@ try {
 </head>
 
 <body>
+    <div class="flash-message">
+        <?php require_once "./lib/flash_message.php"; ?>
+    </div>
+
+    <div class="button">Add News Storys</div>
+
+    <div class="header">
+        <h1>THE FINANCE JOURNAL</h1>
+        <?php require_once "./lib/navbar.php"; ?>
+    </div>
 
     <div class="container largeComp">
 
@@ -381,6 +391,17 @@ try {
             </div>
         <?php } ?>
 
+    </div>
+
+    <div class="footer">
+        <h1>THE FINANCIAL JOURNAL</h1>
+        <div class="footerBlock">
+            <ul>
+                <?php foreach ($categories as $c) { ?>
+                    <li><a href="category.php?id=<?= $c->id ?>"><?= $c->name ?> News</a></li>
+                <?php } ?>
+            </ul>
+        </div>
     </div>
 
 </body>
