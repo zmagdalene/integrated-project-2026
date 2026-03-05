@@ -42,7 +42,7 @@ try {
         <?php require_once "./lib/flash_message.php"; ?>
     </div>
 
-    <div class="button">Add News Storys</div>
+    <div class="button"></div>
 
     <div class="header">
         <h1>THE FINANCE JOURNAL</h1>

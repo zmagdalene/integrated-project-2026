@@ -120,6 +120,9 @@ p.author {
 }
 
 .button {
+    background-image: url(../button/button.png);
+    width: 54px;
+    height: 193px;
     position: fixed;
     right: 0;
 }
