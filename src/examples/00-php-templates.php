@@ -1,8 +1,9 @@
 <?php
 require_once "../lib/config.php";
+require_once "../lib/global.php";
 
 try {
-    $featured_stories = Story::findAll(["limit" => 5, "order_by" => "updated_at", "order" => "DESC"]);
+    $featured_stories = Story::findAll($options = ['limit' => 3, 'order_by' => 'updated_at', 'order' => 'DESC']);
     $categories = Category::findAll();
 } catch (Exception $e) {
     echo $e->getMessage();
@@ -12,10 +13,8 @@ try {
 <html>
 
 <head>
+    <?php include '../lib/head_content.php' ?>
     <title>Example 00 – PHP Templates</title>
-    <link rel="stylesheet" href="../css/reset.css">
-    <link rel="stylesheet" href="../css/grid.css">
-    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>

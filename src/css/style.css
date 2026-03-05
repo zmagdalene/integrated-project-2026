@@ -51,6 +51,7 @@ h5 {
 
 h6 {
     font-size: 12px;
+    line-height: 1;
     margin-bottom: 0px;
     margin-top: 0px;
 }
@@ -105,12 +106,7 @@ p.author {
     margin-bottom: 20px;
     padding: 10px 15px;
     display: flex;
-    justify-content: flex-end;
     align-items: center;
-}
-
-.left {
-    justify-content: flex-start;
 }
 
 /* width-10 mainStory */
@@ -198,16 +194,14 @@ h6.author {
 
 .personalFinance .trending .story {
     gap: 10px;
-    min-height: 115px;
+    min-height: 93px;
     display: flex;
-    align-items: center;
 }
 
-.personalFinance .trending img {
-    width: 100px;
-    height: 60px;
+.personalFinance .pic {
+    flex: 1;
 }
 
 .personalFinance .textHolder {
-    width: 100%;
+    flex: 4;
 }

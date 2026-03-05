@@ -39,7 +39,6 @@ try {
 
 <body>
 
-
     <div class="container largeComp">
 
         <div class="width-12 greyLine"></div>
@@ -52,7 +51,7 @@ try {
 
             <?php foreach ($topStory as $s) { ?>
 
-                <a href="view_story.php">
+                <a href="view_story.php?id=<?= h($s->id) ?>">
                     <div class="content">
 
                         <div class="redLine"></div>
@@ -90,7 +89,7 @@ try {
 
                 <div class="story">
 
-                    <a href="view_story.php">
+                    <a href="view_story.php?id=<?= h($s->id) ?>">
 
                         <div class="category">
                             <?php $category = Category::findById($s->category_id) ?>
@@ -122,7 +121,7 @@ try {
         <?php foreach ($techStories as $s) { ?>
             <div class="width-4 newsComp">
 
-                <a href="view_story.php">
+                <a href="view_story.php?id=<?= h($s->id) ?>">
                     <div class="content">
                         <img src="/<?= $s->img_url ?>" alt="1">
 
@@ -157,7 +156,7 @@ try {
         <?php foreach ($businessStories as $s) { ?>
             <div class="width-4 newsComp">
 
-                <a href="view_story.php">
+                <a href="view_story.php?id=<?= h($s->id) ?>">
                     <div class="content">
                         <img src="/<?= $s->img_url ?>" alt="1">
 
@@ -193,7 +192,7 @@ try {
 
             <?php foreach ($topStockStory as $s) { ?>
 
-                <a href="view_story.php">
+                <a href="view_story.php?id=<?= h($s->id) ?>">
                     <div class="content">
 
                         <div class="redLine"></div>
@@ -231,7 +230,7 @@ try {
 
                 <div class="story">
 
-                    <a href="view_story.php">
+                    <a href="view_story.php?id=<?= h($s->id) ?>">
 
                         <div class="category">
                             <?php $category = Category::findById($s->category_id) ?>
@@ -263,7 +262,7 @@ try {
         <?php foreach ($energyStories as $s) { ?>
             <div class="width-4 newsComp">
 
-                <a href="view_story.php">
+                <a href="view_story.php?id=<?= h($s->id) ?>">
                     <div class="content">
                         <img src="/<?= $s->img_url ?>" alt="1">
 
@@ -299,11 +298,11 @@ try {
 
             <?php foreach ($financeStories as $s) { ?>
 
-                <a href="view_story.php">
+                <a href="view_story.php?id=<?= h($s->id) ?>">
                     <div class="story">
-
-                        <img src="/<?= $s->img_url ?>">
-
+                        <div class="pic">
+                            <img src="/<?= $s->img_url ?>">
+                        </div>
                         <div class="textHolder">
 
                             <div class="category">
@@ -329,10 +328,12 @@ try {
 
             <?php foreach ($financeStories2 as $s) { ?>
 
-                <a href="view_story.php">
+                <a href="view_story.php?id=<?= h($s->id) ?>">
                     <div class="story">
 
-                        <img src="/<?= $s->img_url ?>">
+                        <div class="pic">
+                            <img src="/<?= $s->img_url ?>">
+                        </div>
 
                         <div class="textHolder">
 
@@ -358,7 +359,7 @@ try {
         <?php foreach ($topStory as $s) { ?>
             <div class="width-4 newsComp">
 
-                <a href="view_story.php">
+                <a href="view_story.php?id=<?= h($s->id) ?>">
                     <div class="content">
                         <img src="/<?= $s->img_url ?>">
 
