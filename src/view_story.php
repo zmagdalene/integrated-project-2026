@@ -21,49 +21,57 @@ try {
 <html>
 
 <head>
-    <?php include './lib/head_Content.php' ?>
+    <?php include './inc/head_Content.php' ?>
     <title>Story</title>
 </head>
 
 <body>
-    <?php require_once "./lib/navbar.php"; ?>
-    <?php require_once "./lib/flash_message.php"; ?>
-    <div>
-        <h1><?= $s->headline ?></h1>
-        <h3><?= $s->subheadline ?></h3>
-
-        <p>Hello</p>
-        <p>Goodbye</p>
-
-        <img src="<?= $s->img_url ?>" />
-
-        <div>
-            <p><?= $s->article ?></p>
-        </div>
-
-        <?php $author = Author::findById($s->author_id); ?>
-        <p>Author: <?= $author->first_name . " " . $author->last_name ?></p>
-        <p>Category: <?= Category::findById($s->category_id)->name ?></p>
-        <p>Location: <?= Location::findById($s->location_id)->name ?></p>
-        <p>Date created: <?= $s->created_at ?></p>
-        <p>Last modified: <?= $s->updated_at ?></p>
+    <?php require_once "./inc/flash_message.php"; ?>
+    <div class="header">
+        <h1>THE FINANCE JOURNAL</h1>
+        <?php require_once "./lib/navbar.php"; ?>
     </div>
-    <div>
-        <h2>Related Stories</h2>
-        <?php foreach ($related_stories as $rs) { ?>
-            <?php if ($rs->id == $s->id) {
-                continue;
-            } ?>
-            <div>
-                <h3><a href="view_story.php?id=<?= $rs->id ?>"><?= $rs->headline ?></a></h3>
-                <?php $rs_author = Author::findById($rs->author_id); ?>
-                <p>Author: <?= $rs_author->first_name . " " . $rs_author->last_name ?></p>
-                <!-- <p>Category: <?= Category::findById($rs->category_id)->name ?></p> -->
-                <!-- <p>Location: <?= Location::findById($rs->location_id)->name ?></p> -->
-                <!-- <p>Date created: <?= $rs->created_at ?></p> -->
-                <p>Last modified: <?= $rs->updated_at ?></p>
+
+    <div class="gap"></div>
+
+    <div class="container">
+
+        <div class="width-9">
+            <p><?= Category::findById($s->category_id)->name ?></p>
+            <h1><?= $s->headline ?></h1>
+            <div class="dates">
+                <p>Published: <?= $s->created_at ?></p>
+                <p>Updated: <?= $s->updated_at ?></p>
             </div>
-        <?php } ?>
+            <?php $author = Author::findById($s->author_id); ?>
+            <p>Author: <?= $author->first_name . " " . $author->last_name ?></p>
+            <h3><?= $s->subheadline ?></h3>
+
+            <img src="<?= $s->img_url ?>" />
+
+            <div class="article">
+                <p><?= $s->article ?></p>
+            </div>
+
+            <p>Location: <?= Location::findById($s->location_id)->name ?></p>
+        </div>
+        <div class="width-12">
+            <h2>Related Stories</h2>
+            <?php foreach ($related_stories as $rs) { ?>
+                <?php if ($rs->id == $s->id) {
+                    continue;
+                } ?>
+                <div>
+                    <h3><a href="view_story.php?id=<?= $rs->id ?>"><?= $rs->headline ?></a></h3>
+                    <?php $rs_author = Author::findById($rs->author_id); ?>
+                    <p>Author: <?= $rs_author->first_name . " " . $rs_author->last_name ?></p>
+                    <!-- <p>Category: <?= Category::findById($rs->category_id)->name ?></p> -->
+                    <!-- <p>Location: <?= Location::findById($rs->location_id)->name ?></p> -->
+                    <!-- <p>Date created: <?= $rs->created_at ?></p> -->
+                    <p>Last modified: <?= $rs->updated_at ?></p>
+                </div>
+            <?php } ?>
+        </div>
     </div>
 </body>
 

@@ -33,14 +33,14 @@ try {
 <html lang="en">
 
 <head>
-    <?php include './lib/head_Content.php' ?>
+    <?php include './inc/head_Content.php' ?>
     <title>Newspaper</title>
 </head>
 
 <body>
-    <div class="flash-message">
-        <?php require_once "./lib/flash_message.php"; ?>
-    </div>
+        <div class="flash-message">
+            <?php require_once "./inc/flash_message.php"; ?>
+        </div>
 
     <div class="button"></div>
 
@@ -394,7 +394,7 @@ try {
     </div>
 
     <div class="footer">
-        <h1>THE FINANCIAL JOURNAL</h1>
+        <h1>THE FINANCE JOURNAL</h1>
         <div class="footerBlock">
             <ul>
                 <?php foreach ($categories as $c) { ?>

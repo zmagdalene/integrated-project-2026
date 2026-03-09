@@ -56,15 +56,17 @@ class Story
                 ":author_id"   => $this->author_id,
                 ":category_id" => $this->category_id,
                 ":location_id" => $this->location_id,
+                ":created_at" => $this->created_at,
+                ":updated_at" => $this->updated_at
             ];
 
             if ($this->id === null) {
                 $sql = "INSERT INTO stories (" .
                     "headline, short_headline, subheadline, article, img_url, " .
-                    "author_id, category_id, location_id" .
+                    "author_id, category_id, location_id, created_at, updated_at" .
                     ") VALUES (" .
                     ":headline, :short_headline, :subheadline, :article, :img_url, " .
-                    ":author_id, :category_id, :location_id" .
+                    ":author_id, :category_id, :location_id, :created_at, updated_at" .
                     ")";
             } else {
                 $sql = "UPDATE stories SET " .
@@ -76,10 +78,12 @@ class Story
                     "author_id   = :author_id, " .
                     "category_id = :category_id, " .
                     "location_id = :location_id, " .
+                    "created_at  = :created_at " .
                     "updated_at  = :updated_at " .
                     "WHERE id = :id";
 
                 $params[":id"] = $this->id;
+                $params[":created_at"] = date("Y-m-d H:i:s");
                 $params[":updated_at"] = date("Y-m-d H:i:s");
             }
             $stmt = $db->prepare($sql);

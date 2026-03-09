@@ -96,6 +96,18 @@ p.author {
     height: 100px;
 }
 
+.flash-message.success {
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+    color: #155724;
+}
+
+.flash-message.error {
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+    color: #721c24;
+}
+
 /* header */
 .header {
     background-color: #C94242;
@@ -131,6 +143,11 @@ p.author {
 .navbar {
     gap: 20px;
     display: flex;
+}
+
+/* gap */
+.gap {
+    height: 200px;
 }
 
 /* title Styles */

@@ -22,13 +22,13 @@ try {
 <html>
 
 <head>
-    <?php include './lib/head_Content.php' ?>
+    <?php include './inc/head_Content.php' ?>
     <title>Stories: <?= $category->name ?></title>
 </head>
 
 <body>
-    <?php require_once "./lib/navbar.php"; ?>
-    <?php require_once "./lib/flash_message.php"; ?>
+    <?php require_once "./inc/navbar.php"; ?>
+    <?php require_once "./inc/flash_message.php"; ?>
     
     <h1>Stories: <?= $category->name ?></h1>
     <?php foreach ($stories as $s) { ?>
