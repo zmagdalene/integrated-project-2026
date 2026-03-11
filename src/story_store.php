@@ -25,8 +25,6 @@ try {
         'author_id' => $_POST['author_id'] ?? null,
         'category_id' => $_POST['category_id'] ?? null,
         'location_id' => $_POST['location_id'] ?? null,
-        'created_at' => $_POST['created_at'] ?? null,
-        'updated_at' => $_POST['updated_at'] ?? null,
         'img_url' => $_FILES['img_url'] ?? null
     ];
 
@@ -39,9 +37,6 @@ try {
         'author_id' => 'required|integer',
         'category_id' => 'required|integer',
         'location_id' => 'required|integer',
-        'created_at' => 'required|integer',
-        'updated_at' => 'required|notempty|min:13|max:13|',
-        'location_ids' => 'required|array|min:1',
         'img_url' => 'required|file|image|mimes:jpg,jpeg,png|max_file_size:5242880',
     ];
 
@@ -73,6 +68,8 @@ try {
     }
 
     // Create new story instance
+    $time = date("Y-m-d H:i:s");
+
     $story = new Story();
     $story->headline = $data['headline'];
     $story->short_headline = $data['short_headline'];
@@ -81,18 +78,16 @@ try {
     $story->author_id = $data['author_id'];
     $story->category_id = $data['category_id'];
     $story->location_id = $data['location_id'];
-    $story->created_at = $data['created_at'];
-    $story->updated_at = $data['updated_at'];
     $story->img_url = $imageFilename;
 
     // Save to database
     $story->save();
     // Create location associations
-    if (!empty($data['location_ids']) && is_array($data['location_ids'])) {
-        foreach ($data['location_ids'] as $locationId) {
+    if (!empty($data['location_id']) && is_array($data['location_id'])) {
+        foreach ($data['location_id'] as $locationId) {
             // Verify location exists before creating relationship
             if (Location::findById($locationId)) {
-                StoryLocation::create($story->id, $locationId);
+                // StoryLocation::create($story->id, $locationId);
             }
         }
     }

@@ -39,7 +39,7 @@ try {
 
     <div class="container">
         <div class="width-12">
-            <form action="story_store.php" method="POST">
+            <form action="story_store.php" method="POST" enctype="multipart/form-data" novalidate>
 
                 <div class="input">
                     <label for="headline">Headline:</label>
@@ -76,7 +76,8 @@ try {
                 <div class="input">
                     <label for="author_id">Author:</label>
                     <div>
-                        <select name="author_id" id="author_id">
+                        <select name="author_id" id="author_id" required>
+                            <option value="">---Select Author---</option>
                             <?php foreach ($authors as $a) { ?>
                                 <option value="<?= $a->id ?>" <?= chosen('author_id', $a->id) ? 'selected' : '' ?>><?= $a->first_name, " ", $a->last_name ?></option>
                             <?php } ?>
@@ -88,7 +89,8 @@ try {
                 <div class="input">
                     <label for="category_id">Category:</label>
                     <div>
-                        <select name="category_id" id="category_id">
+                        <select name="category_id" id="category_id" required>
+                            <option value="">---Select Category---</option>
                             <?php foreach ($categories as $c) { ?>
                                 <option value="<?= $c->id ?>" <?= chosen('category_id', $c->id) ? 'selected' : '' ?>><?= $c->name ?></option>
                             <?php } ?>
@@ -100,7 +102,8 @@ try {
                 <div class="input">
                     <label for="location_id">Location:</label>
                     <div>
-                        <select name="location_id" id="location_id">
+                        <select name="location_id" id="location_id" required>
+                            <option value="">---Select Location---</option>
                             <?php foreach ($locations as $l) { ?>
                                 <option value="<?= $l->id ?>" <?= chosen('location_id', $l->id) ? 'selected' : '' ?>><?= $l->name ?></option>
                             <?php } ?>
@@ -113,7 +116,7 @@ try {
                     <label for="img_url" class="special">Story Cover Image:</label>
                     <div>
                         <input type="file" name="img_url" id="img_url" accept="image/*" value="" required>
-                        <p><?= error('img_url') ?></p>
+                        <p class="error"><?= error('img_url') ?></p>
                     </div>
                 </div>
 
@@ -129,3 +132,5 @@ try {
 
 <?php
 // TODO: Clear form data and errors from the session after displaying the form
+clearFormData();
+clearFormErrors(); ?>

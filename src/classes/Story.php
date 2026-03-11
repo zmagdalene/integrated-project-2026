@@ -66,7 +66,7 @@ class Story
                     "author_id, category_id, location_id, created_at, updated_at" .
                     ") VALUES (" .
                     ":headline, :short_headline, :subheadline, :article, :img_url, " .
-                    ":author_id, :category_id, :location_id, :created_at, updated_at" .
+                    ":author_id, :category_id, :location_id, :created_at, :updated_at" .
                     ")";
             } else {
                 $sql = "UPDATE stories SET " .
@@ -78,7 +78,6 @@ class Story
                     "author_id   = :author_id, " .
                     "category_id = :category_id, " .
                     "location_id = :location_id, " .
-                    "created_at  = :created_at " .
                     "updated_at  = :updated_at " .
                     "WHERE id = :id";
 
