@@ -270,3 +270,19 @@ h6.author {
 .footer {
     background-color: #C94242;
 }
+
+.footerContent {
+    padding: 20px;
+    gap: 40px;
+    display: flex;
+    flex-flow: wrap column;
+}
+
+.footerBlocks {
+    gap: 40px;
+    display: flex;
+}
+
+.foot {
+    font-size: 10px;
+}

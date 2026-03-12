@@ -47,7 +47,7 @@ try {
             <p>Author: <?= $author->first_name . " " . $author->last_name ?></p>
             <h3><?= $s->subheadline ?></h3>
 
-            <img src="<?= $s->img_url ?>" />
+            <img src="images/<?= $s->img_url ?>" />
 
             <div class="article">
                 <p><?= $s->article ?></p>

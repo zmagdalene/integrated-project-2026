@@ -101,7 +101,7 @@ try {
     setFlashMessage('success', 'Story stored successfully.');
 
     // Redirect to story details page
-    redirect('story_view.php?id=' . $story->id);
+    redirect('view_story.php?id=' . $story->id);
 } catch (Exception $e) {
     // Error - clean up uploaded image
     if (isset($imageFilename) && $imageFilename) {

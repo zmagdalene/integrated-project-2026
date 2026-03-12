@@ -3,8 +3,8 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: mysql-container
--- Generation Time: Mar 12, 2026 at 10:58 AM
--- Server version: 8.0.44
+-- Generation Time: Mar 12, 2026 at 11:28 AM
+-- Server version: 8.0.45
 -- PHP Version: 8.3.26
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -181,7 +181,8 @@ INSERT INTO `stories` (`id`, `headline`, `short_headline`, `subheadline`, `artic
 (32, 'What Is an Asset Class? A Simple Guide for Future Investors', 'What Is an Asset Class?', 'An asset class is a group of investments that share similar characteristics, risks, and behavior in the market, helping investors diversify portfolios, manage risk, and understand how different types of assets—such as stocks, bonds, and cash—perform under various economic conditions.', '<p>06/09/2018 | Zurich LifePersonal finance</p><p>There are four main types of investment, which are often called ‘asset classes’...</p>', 'images/32_What_Is_an_Asset_Class_A_Simple_Guide_for_future_Investors.jpg', 32, 5, 1, '2018-09-06 04:14:00', '2026-03-12 10:58:29'),
 (33, 'Why Cash Isn’t Always King in Investing', 'When Cash Falls Short', 'While holding cash offers safety and flexibility, relying on it too heavily can limit long-term growth, as inflation and missed investment opportunities may erode purchasing power compared with assets that generate returns over time.', '<p>31/08/2018 | Zurich LifeInvestment news</p><p>Over the last number of years, returns from investments such as equities and bonds have far exceeded that of cash...</p>', 'images/33_Why_Cash_Isn’t_Always_King_in_Investing.jpg', 33, 5, 1, '2018-08-31 07:26:00', '2026-03-12 10:58:32'),
 (34, 'How to Get the Most Out of Budget 2023', 'Maximize Budget 2023 Benefits', 'Smart strategies to leverage tax changes, rebates, incentives, and financial updates announced in Budget 2023.', '<p>THEY SEEK HIM here, they seek him there: it’s hard to find someone who’s not affected by the finance minister’s changes in Budget 2023...</p>', 'images/34_How_to_Get_the_Most_Out_of_Budget_2023.jpg', 34, 1, 1, '2022-09-27 19:28:00', '2026-03-12 10:58:37'),
-(35, 'How Ireland’s Electricity Grid Is Getting Ready for the Future', 'Ireland’s Grid Prepares for Tomorrow', 'A look at upgrades, renewable integration, and innovations powering a resilient, low-carbon energy system.', '<p>Ireland’s transition to cleaner energy is often discussed in terms of wind farms and solar. However, the move towards renewable energy also relies on an electricity grid that can safely and reliably deliver that power...</p>', 'images/35_How_Ireland\'s_electricity_grid_is_getting_ready_for_the_future.jpg', 35, 1, 1, '2026-02-19 04:02:00', '2026-03-12 10:58:39');
+(35, 'How Ireland’s Electricity Grid Is Getting Ready for the Future', 'Ireland’s Grid Prepares for Tomorrow', 'A look at upgrades, renewable integration, and innovations powering a resilient, low-carbon energy system.', '<p>Ireland’s transition to cleaner energy is often discussed in terms of wind farms and solar. However, the move towards renewable energy also relies on an electricity grid that can safely and reliably deliver that power...</p>', 'images/35_How_Ireland\'s_electricity_grid_is_getting_ready_for_the_future.jpg', 35, 1, 1, '2026-02-19 04:02:00', '2026-03-12 10:58:39'),
+(36, 'SDFSDFDS', 'SDFSDF', 'SDFSDFSDF', 'DSFDSFSFSFSDFDSFDSFDSSDFDSFSDFDSF', 'story_69b2a1862dc888.00401458.jpg', 13, 1, 1, '2026-03-12 11:20:38', '2026-03-12 11:25:40');
 
 -- --------------------------------------------------------
 
@@ -199,7 +200,12 @@ CREATE TABLE `story_tags` (
 --
 
 INSERT INTO `story_tags` (`story_id`, `tag_id`) VALUES
-(4, 1);
+(4, 1),
+(31, 1),
+(32, 1),
+(33, 1),
+(34, 1),
+(35, 1);
 
 -- --------------------------------------------------------
 
@@ -289,7 +295,7 @@ ALTER TABLE `locations`
 -- AUTO_INCREMENT for table `stories`
 --
 ALTER TABLE `stories`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT for table `tags`
