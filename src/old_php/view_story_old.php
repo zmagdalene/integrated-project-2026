@@ -34,7 +34,7 @@ try {
         <div>
             <p><?= $s->article ?></p>
         </div>
-        <p><img src="<?= $s->img_url ?>" /></p>
+        <p><img src="<?= h($s->img_url) ?>" /></p>
         <?php $author = Author::findById($s->author_id); ?>
         <p>Author: <?= $author->first_name . " " . $author->last_name ?></p>
         <p>Category: <?= Category::findById($s->category_id)->name ?></p>

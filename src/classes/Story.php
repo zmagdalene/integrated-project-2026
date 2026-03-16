@@ -17,26 +17,26 @@ class Story
     public $created_at;
     public $updated_at;
 
-    public function __construct($props = null)
+    public function __construct($data = null)
     {
-        if ($props != null) {
-            if (array_key_exists("id", $props)) {
-                $this->id = $props["id"];
+        if ($data != null) {
+            if (array_key_exists("id", $data)) {
+                $this->id = $data["id"];
             }
-            $this->headline       = $props["headline"];
-            $this->short_headline = $props["short_headline"];
-            $this->subheadline    = $props["subheadline"];
-            $this->article     = $props["article"];
-            $this->img_url     = $props["img_url"];
-            $this->author_id   = $props["author_id"];
-            $this->category_id = $props["category_id"];
-            $this->location_id = $props["location_id"];
+            $this->headline       = $data["headline"] ?? null;
+            $this->short_headline = $data["short_headline"] ?? null;
+            $this->subheadline    = $data["subheadline"] ?? null;
+            $this->article     = $data["article"] ?? null;
+            $this->img_url     = $data["img_url"] ?? null;
+            $this->author_id   = $data["author_id"] ?? null;
+            $this->category_id = $data["category_id"] ?? null;
+            $this->location_id = $data["location_id"] ?? null;
 
-            if (array_key_exists("created_at", $props)) {
-                $this->created_at = $props["created_at"];
+            if (array_key_exists("created_at", $data)) {
+                $this->created_at = $data["created_at"];
             }
-            if (array_key_exists("updated_at", $props)) {
-                $this->updated_at = $props["updated_at"];
+            if (array_key_exists("updated_at", $data)) {
+                $this->updated_at = $data["updated_at"];
             }
         }
     }

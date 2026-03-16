@@ -122,6 +122,12 @@ class Validator
         if ($value === null || $value === '' || (is_array($value) && empty($value))) {
             $this->addError($field, "The $field field is required.");
         }
+
+        if (is_array($value) && isset($value['error'])) {
+            if ($value['error'] === UPLOAD_ERR_NO_FILE) {
+                $this->addError($field, "The $field field is required.");
+            }
+        }
     }
 
     private function validateNotEmpty($field, $value)

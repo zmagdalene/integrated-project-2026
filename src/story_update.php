@@ -1,7 +1,8 @@
 <?php
-require_once './lib/config.php';
-require_once './lib/global.php';
-require_once './lib/session.php';
+require_once 'php/lib/config.php';
+require_once 'php/lib/session.php';
+require_once 'php/lib/forms.php';
+require_once 'php/lib/utils.php';
 
 startSession();
 
@@ -52,7 +53,12 @@ try {
         throw new Exception('Validation failed.');
     }
 
-    // All validation passed - now process and save
+    // Find existing story
+    $story = Story::findById($data['id']);
+    if (!$story) {
+        throw new Exception('Story not found.');
+    }
+
     // Verify category exists
     $category = Category::findById($data['category_id']);
     if (!$category) {
@@ -60,14 +66,20 @@ try {
     }
 
     // Process the uploaded image (validation already completed)
+    $imageFilename = null;
     $uploader = new ImageUpload();
-    $imageFilename = $uploader->process($_FILES['img_url']);
-
-    if (!$imageFilename) {
-        throw new Exception('Failed to process and save the image.');
+    if ($uploader->hasFile('img_url')) {
+        // Delete old image
+        $uploader->deleteImage($story->img_url);
+        // Process new image
+        $imageFilename = $uploader->process($_FILES['img_url']);
+        // Check for processing errors
+        if (!$imageFilename) {
+            throw new Exception('Failed to process and save the image.');
+        }
     }
 
-    // Create new story instance
+    // Update the story instance
     $story = new Story();
     $story->headline = $data['headline'];
     $story->short_headline = $data['short_headline'];
@@ -76,19 +88,12 @@ try {
     $story->author_id = $data['author_id'];
     $story->category_id = $data['category_id'];
     $story->location_id = $data['location_id'];
-    $story->img_url = $imageFilename;
+    if ($imageFilename) {
+        $book->img_url = $imageFilename;
+    }
 
     // Save to database
     $story->save();
-    // Create location associations
-    if (!empty($data['location_id']) && is_array($data['location_id'])) {
-        foreach ($data['location_id'] as $locationId) {
-            // Verify location exists before creating relationship
-            if (Location::findById($locationId)) {
-                // StoryLocation::create($story->id, $locationId);
-            }
-        }
-    }
 
     // Clear any old form data
     clearFormData();
@@ -96,13 +101,13 @@ try {
     clearFormErrors();
 
     // Set success flash message
-    setFlashMessage('success', 'Story stored successfully.');
+    setFlashMessage('success', 'Story updated successfully.');
 
     // Redirect to story details page
     redirect('view_story.php?id=' . $story->id);
 } catch (Exception $e) {
     // Error - clean up uploaded image
-    if (isset($imageFilename) && $imageFilename) {
+    if ($imageFilename) {
         $uploader->deleteImage($imageFilename);
     }
 
@@ -113,5 +118,10 @@ try {
     setFormData($data);
     setFormErrors($errors);
 
-    redirect('story_create.php');
+    // Redirect back to edit page if there is an ID; otherwise, go to index page
+    if (isset($data['id']) && $data['id']) {
+        redirect('story_edit.php?id=' . $data['id']);
+    } else {
+        redirect('index.php');
+    }
 }

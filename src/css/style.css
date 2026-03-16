@@ -131,13 +131,134 @@ p.author {
     padding-top: 6px;
 }
 
-.button {
-    background-image: url(../button/button.png);
-    width: 54px;
-    height: 193px;
+/* admin display */
+/* ================================================================= */
+/* ================================================================= */
+.adminButton {
+    width: 20px;
+    height: 55px;
     position: fixed;
     right: 0;
+    top: 256px;
+    cursor: pointer;
 }
+
+.admin_content {
+    width: 100%;
+    position: fixed;
+    z-index: 5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.admin_content .hiddenText {
+    background-color: #FFFFFF;
+    border-radius: 6px;
+    width: 583px;
+    padding: 20px;
+    gap: 20px;
+    position: relative;
+    top: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.admin_content .hiddenText .topRow {
+    display: flex;
+}
+
+.admin_content .hiddenText .topRow .bootsLogo {
+    width: 100px;
+}
+
+.admin_content .hiddenText .topRow .exit {
+    position: absolute;
+    transform: translateX(300px);
+    cursor: pointer;
+}
+
+.admin_content .hiddenText .cards {
+    gap: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.admin_content .hiddenText .cards .card {
+    background-color: #FFFFFF;
+    border: 1px solid #D0D0D0;
+    border-radius: 3px;
+    width: 160px;
+    height: 223px;
+    padding: 20px 5px;
+    transition: all ease-out 0.05s;
+    text-align: center;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+}
+
+.admin_content .hiddenText .imageHolder {
+    width: 100px;
+    height: 61px;
+}
+
+.admin_content .hiddenText .imageHolder01 {
+    background-image: url(../Images/admin_Overlay/admin_overlay_pic_comp1.svg);
+}
+
+.admin_content .hiddenText .imageHolder02 {
+    background-image: url(../Images/admin_Overlay/admin_overlay_pic_comp2.svg);
+}
+
+.admin_content .hiddenText a:hover .card {
+    box-shadow: 0 2px 4px 0 rgba(186, 200, 211, 0.75);
+    transform: translateY(-5%);
+}
+
+.admin_content .hiddenText .text {
+    width: 100%;
+}
+
+.admin_content .hiddenText .text a {
+    width: fit-content;
+    display: flex;
+    align-items: center;
+}
+
+.admin_content .hiddenText .text a:hover {
+    text-decoration: underline;
+}
+
+.admin_content .hiddenText p {
+    color: #000000;
+    font-size: 13px;
+    line-height: 19px;
+}
+
+.admin_content .hiddenText .cards h4 {
+    color: #000000;
+    font-size: 15px;
+    line-height: 24px;
+}
+
+.admin_content .hiddenText .cards p {
+    font-size: 12px;
+    line-height: 18px;
+}
+
+.admin_content .hiddenText .text p {
+    font-size: 11px;
+    line-height: 18px;
+}
+
+/* ================================================================= */
+/* ================================================================= */
 
 /* navbar */
 .navbar {

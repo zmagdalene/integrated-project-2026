@@ -87,7 +87,7 @@ try {
                             <select name="author_id" id="author_id" required>
                                 <option value="">---Select Author---</option>
                                 <?php foreach ($authors as $a) { ?>
-                                    <option value="<?= h($a->id) ?>" <?= chosen('author_id', $a->id) ? 'selected' : '' ?>><?= h($a->first_name), " ", h($a->last_name) ?></option>
+                                    <option value="<?= h($a->id) ?>" <?= chosen('author_id', $a->id, $story->author_id) ? 'selected' : '' ?>><?= h($a->first_name), " ", h($a->last_name) ?></option>
                                 <?php } ?>
                             </select>
                             <p class="error"><?= error('author_id') ?></p>
@@ -100,7 +100,7 @@ try {
                             <select name="category_id" id="category_id" required>
                                 <option value="">---Select Category---</option>
                                 <?php foreach ($categories as $c) { ?>
-                                    <option value="<?= h($c->id) ?>" <?= chosen('category_id', $c->id) ? 'selected' : '' ?>><?= h($c->name) ?></option>
+                                    <option value="<?= h($c->id) ?>" <?= chosen('category_id', $c->id, $story->category_id) ? 'selected' : '' ?>><?= h($c->name) ?></option>
                                 <?php } ?>
                             </select>
                             <p class="error"><?= error('category_id') ?></p>
@@ -113,7 +113,7 @@ try {
                             <select name="location_id" id="location_id" required>
                                 <option value="">---Select Location---</option>
                                 <?php foreach ($locations as $l) { ?>
-                                    <option value="<?= h($l->id) ?>" <?= chosen('location_id', $l->id) ? 'selected' : '' ?>><?= h($l->name) ?></option>
+                                    <option value="<?= h($l->id) ?>" <?= chosen('location_id', $l->id, $story->location_id) ? 'selected' : '' ?>><?= h($l->name) ?></option>
                                 <?php } ?>
                             </select>
                             <p class="error"><?= error('location_id') ?></p>
