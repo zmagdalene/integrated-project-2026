@@ -89,7 +89,7 @@ try {
     $story->category_id = $data['category_id'];
     $story->location_id = $data['location_id'];
     if ($imageFilename) {
-        $book->img_url = $imageFilename;
+        $story->img_url = 'images/' . $imageFilename;
     }
 
     // Save to database

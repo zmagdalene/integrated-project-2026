@@ -132,8 +132,15 @@ p.author {
 }
 
 /* admin display */
-/* ================================================================= */
-/* ================================================================= */
+#overlay {
+    background-color: rgba(55, 55, 55, 0.7);
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
+
 .adminButton {
     width: 20px;
     height: 55px;
@@ -143,52 +150,31 @@ p.author {
     cursor: pointer;
 }
 
-.admin_content {
-    width: 100%;
-    position: fixed;
-    z-index: 5;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-}
-
-.admin_content .hiddenText {
+.adminPopup {
     background-color: #FFFFFF;
     border-radius: 6px;
-    width: 583px;
+    width: 400px;
     padding: 20px;
-    gap: 20px;
-    position: relative;
-    top: 200px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+    text-align: center;
 }
 
-.admin_content .hiddenText .topRow {
-    display: flex;
-}
-
-.admin_content .hiddenText .topRow .bootsLogo {
-    width: 100px;
-}
-
-.admin_content .hiddenText .topRow .exit {
+.adminPopup .exit {
     position: absolute;
-    transform: translateX(300px);
+    display: flex;
+    justify-self: flex-end;
+    transform: translateY(-37px);
     cursor: pointer;
 }
 
-.admin_content .hiddenText .cards {
-    gap: 15px;
+.adminPopup .cards {
+    margin-top: 50px;
+    gap: 30px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.admin_content .hiddenText .cards .card {
+.adminPopup .card {
     background-color: #FFFFFF;
     border: 1px solid #D0D0D0;
     border-radius: 3px;
@@ -197,68 +183,21 @@ p.author {
     padding: 20px 5px;
     transition: all ease-out 0.05s;
     text-align: center;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    flex-direction: column;
+    cursor: pointer;
 }
 
-.admin_content .hiddenText .imageHolder {
-    width: 100px;
-    height: 61px;
+.adminPopup img {
+    width: 80px;
+    margin: auto;
 }
 
-.admin_content .hiddenText .imageHolder01 {
-    background-image: url(../Images/admin_Overlay/admin_overlay_pic_comp1.svg);
-}
-
-.admin_content .hiddenText .imageHolder02 {
-    background-image: url(../Images/admin_Overlay/admin_overlay_pic_comp2.svg);
-}
-
-.admin_content .hiddenText a:hover .card {
-    box-shadow: 0 2px 4px 0 rgba(186, 200, 211, 0.75);
+.adminPopup .card:hover {
+    box-shadow: 0 2px 4px 0 rgba(193, 114, 114, 0.75);
     transform: translateY(-5%);
 }
 
-.admin_content .hiddenText .text {
-    width: 100%;
-}
+/* admin login */
 
-.admin_content .hiddenText .text a {
-    width: fit-content;
-    display: flex;
-    align-items: center;
-}
-
-.admin_content .hiddenText .text a:hover {
-    text-decoration: underline;
-}
-
-.admin_content .hiddenText p {
-    color: #000000;
-    font-size: 13px;
-    line-height: 19px;
-}
-
-.admin_content .hiddenText .cards h4 {
-    color: #000000;
-    font-size: 15px;
-    line-height: 24px;
-}
-
-.admin_content .hiddenText .cards p {
-    font-size: 12px;
-    line-height: 18px;
-}
-
-.admin_content .hiddenText .text p {
-    font-size: 11px;
-    line-height: 18px;
-}
-
-/* ================================================================= */
-/* ================================================================= */
 
 /* navbar */
 .navbar {
@@ -269,6 +208,15 @@ p.author {
 /* gap */
 .gap {
     height: 200px;
+}
+
+/* hidden and flex style */
+.hidden {
+    display: none;
+}
+
+.flex {
+    display: flex;
 }
 
 /* title Styles */

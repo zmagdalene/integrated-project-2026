@@ -76,7 +76,9 @@ try {
     $story->author_id = $data['author_id'];
     $story->category_id = $data['category_id'];
     $story->location_id = $data['location_id'];
-    $story->img_url = $imageFilename;
+    if ($imageFilename) {
+        $story->img_url = 'images/' . $imageFilename;
+    }
 
     // Save to database
     $story->save();

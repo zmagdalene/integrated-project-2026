@@ -42,57 +42,63 @@ try {
         <?php require_once "./inc/flash_message.php"; ?>
     </div>
 
-    <div class="overlay">
-    </div>
-
-    <div class="admin_overlay">
-    </div>
-
-    <div class="admin_content">
-        <div class="hiddenText">
-            <div class="topRow">
-                <div class="bootsLogo">
-                    <img src="Images/Icons/Boots Logo top left.png" alt="bootsLogo">
-                </div>
-
+    <div id="overlay">
+        <div class="adminPopup">
+            <div class="head">
+                <h3>TFJ</h3>
                 <div class="exit">
-                    <img src="Images/Admin_Overlay/plus.svg" alt="exit">
+                    <h4>X</h4>
+                </div>
+                <p>Please Select one...</p>
+            </div>
+
+            <div class="cards">
+
+                <div class="card admin">
+                    <img src="assets/lock-solid-full.svg" alt="admin">
+                    <h4>I have admin permissions</h4>
+                </div>
+
+                <div class="card noAdmin">
+                    <img src="assets/lock-open-solid-full.svg" alt="noAdmin">
+                    <h4>I would like to request admin permissions</h4>
                 </div>
             </div>
-            <p>Your feedback is important to us and will help us to improve our website.
-                Please leave feedback about...</p>
-            <div class="cards">
-                <a href="https://www.bootsreviewpanel.com/">
-                    <div class="card">
-                        <div class="imageHolder imageHolder01">
-                        </div>
-                        <h4>An area of this page</h4>
-                        <p>Provide feedback about<br>a specific part of this page.</p>
-                    </div>
-                </a>
 
-                <a
-                    href="https://www.boots.ie/contact-us?srsltid=AfmBOoqtjrSPn3es4WvkwelYCCtsLejPb0AaqkNpBu1SJjSIX4McqhFf">
-                    <div class="card">
-                        <div class="imageHolder imageHolder02">
-                        </div>
-                        <h4>General feedback</h4>
-                        <p>Give general feedback about the website.</p>
-                    </div>
-                </a>
+        </div>
+
+        <div class="adminPopup" id="adminDisplay">
+            <div class="head">
+                <h3>TFJ</h3>
+                <div class="exit">
+                    <h4>X</h4>
+                </div>
+                <p>Please Enter Admin Password</p>
             </div>
+            <img src="assets/lock-solid-full.svg" alt="admin">
 
-            <div class="text">
-                <a href="https://www.getfeedback.com/digital?utm_source=live_button&utm_medium=powered-link">
-                    <img src="Images/Feedback_Overlay/icon.svg" alt="icon">
-                    <p>Powered by GetFeedback</p>
-                </a>
+            <div>
+                <input type="text" value="">
+                <button>Confirm</button>
             </div>
         </div>
+
+        <div class="adminPopup" id="noAdminDisplay">
+            <div class="head">
+                <h3>TFJ</h3>
+                <div class="exit">
+                    <h4>X</h4>
+                </div>
+                <p>Please Contact TFJ@gmail.com for more info.</p>
+            </div>
+            <img src="assets/paper-plane-solid-full.svg" alt="admin">
+        </div>
+
+    </div>
     </div>
 
     <div class="adminButton">
-        <img src="button/button.png" alt="adminButton">
+        <img src="assets/button.png" alt="adminButton">
     </div>
 
     <div class="header">
