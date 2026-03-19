@@ -90,6 +90,10 @@ p.author {
     justify-content: flex-end;
 }
 
+.red {
+    color: #C94242;
+}
+
 /* flash-messages */
 .flash-message {
     background-color: #F5F5F5;
@@ -155,6 +159,7 @@ p.author {
     border-radius: 6px;
     width: 400px;
     padding: 20px;
+    flex-flow: column wrap;
     text-align: center;
 }
 
@@ -196,8 +201,48 @@ p.author {
     transform: translateY(-5%);
 }
 
-/* admin login */
+/* admin mode*/
+#adminMode {
+    display: flex;
+    gap: 20px;
+}
 
+.button {
+    border: 1px solid #808080;
+    border-radius: 6px;
+    padding: 5px 15px;
+    transition: all ease-in-out 0.3s;
+}
+
+.edit {
+    background-color: #808080;
+    color: #FFFFFF;
+}
+
+
+.edit p {
+    color: inherit;
+}
+
+.delete {
+    border-color: #C94242;
+    background-color: #C94242;
+    color: #FFFFFF;
+}
+
+.delete p {
+    color: inherit;
+}
+
+a:hover .delete {
+    background-color: #FFFFFF;
+    color: #C94242;
+}
+
+a:hover .edit {
+    background-color: #FFFFFF;
+    color: #808080;
+}
 
 /* navbar */
 .navbar {
@@ -292,14 +337,10 @@ h6.author {
 }
 
 .trending .category {
-    color: #C94242;
+    color: #808080;
     gap: 4px;
     margin-bottom: 5px;
     display: flex;
-}
-
-.trending h6.author {
-    color: #808080;
 }
 
 /* width-4 newsComp */

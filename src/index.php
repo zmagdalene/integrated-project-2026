@@ -23,6 +23,8 @@ try {
 
     $category = Category::findAll();
     $author = Author::findAll();
+
+    $adminControls = ['edit' => 'Edit Story', 'delete' => 'Delete Story'];
 } catch (Exception $e) {
     echo $e->getMessage();
     exit();
@@ -43,7 +45,7 @@ try {
     </div>
 
     <div id="overlay">
-        <div class="adminPopup">
+        <div class="adminPopup" id="defaultDisplay">
             <div class="head">
                 <h3>TFJ</h3>
                 <div class="exit">
@@ -78,8 +80,8 @@ try {
             <img src="assets/lock-solid-full.svg" alt="admin">
 
             <div>
-                <input type="text" value="">
-                <button>Confirm</button>
+                <input type="text" value="" id="passwordInput">
+                <button id="adminConfirm">Confirm</button>
             </div>
         </div>
 
@@ -144,6 +146,18 @@ try {
                         <p class="category"><?= h($category->name) ?></p>
                     </div>
                 </a>
+                <div id="adminMode">
+                    <a href="story_edit.php?id=<?= h($s->id) ?>">
+                        <div class="button edit">
+                            <p><?= h($adminControls['edit']) ?></p>
+                        </div>
+                    </a>
+                    <a href="">
+                        <div class="button delete">
+                            <p><?= h($adminControls['delete']) ?></p>
+                        </div>
+                    </a>
+                </div>
 
             <?php } ?>
         </div>
@@ -160,9 +174,9 @@ try {
 
                         <div class="category">
                             <?php $category = Category::findById($s->category_id) ?>
-                            <h6><?= $category->name ?></h6>
+                            <h6 class="red"><?= $category->name ?></h6>
                             <?php $author = Author::findById($s->author_id) ?>
-                            <h6 class="author">/ <?= $author->first_name . " " . $author->last_name ?></h6>
+                            <h6>/ <?= $author->first_name . " " . $author->last_name ?></h6>
                         </div>
 
                         <h5><?= $s->short_headline ?></h5>
@@ -301,9 +315,9 @@ try {
 
                         <div class="category">
                             <?php $category = Category::findById($s->category_id) ?>
-                            <h6><?= $category->name ?></h6>
+                            <h6 class="red"><?= $category->name ?></h6>
                             <?php $author = Author::findById($s->author_id) ?>
-                            <h6 class="author">/ <?= $author->first_name . " " . $author->last_name ?></h6>
+                            <h6>/ <?= $author->first_name . " " . $author->last_name ?></h6>
                         </div>
 
                         <h5><?= $s->short_headline ?></h5>
@@ -374,9 +388,9 @@ try {
 
                             <div class="category">
                                 <?php $category = Category::findById($s->category_id) ?>
-                                <h6><?= $category->name ?></h6>
+                                <h6 class="red"><?= $category->name ?></h6>
                                 <?php $author = Author::findById($s->author_id) ?>
-                                <h6 class="author">/ <?= $author->first_name . " " . $author->last_name ?></h6>
+                                <h6>/ <?= $author->first_name . " " . $author->last_name ?></h6>
                             </div>
 
                             <h5><?= $s->short_headline ?></h5>
@@ -406,9 +420,9 @@ try {
 
                             <div class="category">
                                 <?php $category = Category::findById($s->category_id) ?>
-                                <h6><?= $category->name ?></h6>
+                                <h6 class="red"><?= $category->name ?></h6>
                                 <?php $author = Author::findById($s->author_id) ?>
-                                <h6 class="author">/ <?= $author->first_name . " " . $author->last_name ?></h6>
+                                <h6>/ <?= $author->first_name . " " . $author->last_name ?></h6>
                             </div>
 
                             <h5><?= $s->short_headline ?></h5>

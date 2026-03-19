@@ -12,7 +12,3 @@
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/grid.css">
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/newsComp.css">
-    <link rel="stylesheet" href="css/trending.css">
-    <link rel="stylesheet" href="css/largeComp.css">
-    <link rel="stylesheet" href="css/techNews.css">
