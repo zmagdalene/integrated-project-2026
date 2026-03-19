@@ -24,7 +24,7 @@ try {
     $category = Category::findAll();
     $author = Author::findAll();
 
-    $adminControls = ['edit' => 'Edit Story', 'delete' => 'Delete Story'];
+    $adminControls = ["edit" => ["url" => "story_edit.php", "icon" => "fa-solid fa-pen-to-square", "text" => "Edit Story"], "delete" => ["url" => "story_edit.php", "icon" => "fa-solid fa-trash-can", "text" => "Delete Story"]];
 } catch (Exception $e) {
     echo $e->getMessage();
     exit();
@@ -147,16 +147,14 @@ try {
                     </div>
                 </a>
                 <div id="adminMode">
-                    <a href="story_edit.php?id=<?= h($s->id) ?>">
-                        <div class="button edit">
-                            <p><?= h($adminControls['edit']) ?></p>
-                        </div>
-                    </a>
-                    <a href="">
-                        <div class="button delete">
-                            <p><?= h($adminControls['delete']) ?></p>
-                        </div>
-                    </a>
+                    <?php foreach ($adminControls as $action => $item) { ?>
+                        <a href="<?= h($item['url']) ?>?id=<?= h($s->id) ?>">
+                            <div class="button <?= $action ?>">
+                                <i class="<?= h($item['icon']) ?>"></i>
+                                <p><?= h($item['text']) ?></p>
+                            </div>
+                        </a>
+                    <?php } ?>
                 </div>
 
             <?php } ?>

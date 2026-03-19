@@ -214,24 +214,19 @@ p.author {
     transition: all ease-in-out 0.3s;
 }
 
+.button p {
+    color: inherit;
+}
+
 .edit {
     background-color: #808080;
     color: #FFFFFF;
-}
-
-
-.edit p {
-    color: inherit;
 }
 
 .delete {
     border-color: #C94242;
     background-color: #C94242;
     color: #FFFFFF;
-}
-
-.delete p {
-    color: inherit;
 }
 
 a:hover .delete {

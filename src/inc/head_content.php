@@ -12,3 +12,5 @@
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/grid.css">
     <link rel="stylesheet" href="css/style.css">
+
+    <script src="https://kit.fontawesome.com/89c57eb45e.js" crossorigin="anonymous"></script>
