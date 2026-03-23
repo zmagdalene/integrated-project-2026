@@ -1,10 +1,10 @@
 const overlay = document.getElementById("overlay");
 const adminButton = document.querySelector(".adminButton img");
 const popup = document.querySelectorAll(".adminPopup");
-const cards = document.querySelectorAll('.cards');
+const cards = document.getElementsByClassName('.cards');
 const exit = document.querySelectorAll(".adminPopup .exit");
 
-// const defaultDisplay = document.getElementById("defaultDisplay");
+const defaultDisplay = document.getElementById("defaultDisplay");
 const adminDisplay = document.getElementById("adminDisplay");
 const noAdminDisplay = document.getElementById("noAdminDisplay");
 
@@ -12,7 +12,6 @@ const adminCard = document.querySelectorAll(".adminPopup .cards .admin");
 const noAdminCard = document.querySelectorAll(".adminPopup .cards .noAdmin");
 
 let adminPass = "Password123";
-let currentState = "defaultDisplay";
 const pass = document.getElementById("passwordInput");
 const passConfirm = document.getElementById("adminConfirm");
 
@@ -36,22 +35,10 @@ function toggle(element) {
 }
 
 adminButton.addEventListener("click", () => {
-    showPopup(currentState);
+    toggle(overlay);
+    toggle(defaultDisplay);
+    toggle(cards);
 });
-
-function showPopup(state) {
-    const target = document.getElementById(state);
-    toggle(target);
-
-    cards.forEach(card => {
-        toggle(card);
-    });
-
-    if (state === "defaultDisplay") {
-        toggle(overlay);
-    }
-    currentState = state;
-}
 
 exit.forEach(exit => {
     exit.addEventListener("click", () => {

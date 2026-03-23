@@ -174,7 +174,6 @@ p.author {
 .adminPopup .cards {
     margin-top: 50px;
     gap: 30px;
-    display: flex;
     justify-content: center;
     align-items: center;
 }
@@ -191,9 +190,9 @@ p.author {
     cursor: pointer;
 }
 
-.adminPopup img {
-    width: 80px;
-    margin: auto;
+.adminPopup i {
+    font-size: 65px;
+    margin: 10px auto;
 }
 
 .adminPopup .card:hover {
@@ -208,14 +207,19 @@ p.author {
 }
 
 .button {
-    border: 1px solid #808080;
+    border: 2px solid #808080;
     border-radius: 6px;
-    padding: 5px 15px;
+    padding-right: 2px;
     transition: all ease-in-out 0.3s;
+    gap: 5px;
+    display: flex;
+    align-items: center;
 }
 
 .button p {
     color: inherit;
+    font-size: 10px;
+    font-weight: 900;
 }
 
 .edit {
@@ -257,6 +261,10 @@ a:hover .edit {
 
 .flex {
     display: flex;
+}
+
+.underline {
+    text-decoration: underline;
 }
 
 /* title Styles */
