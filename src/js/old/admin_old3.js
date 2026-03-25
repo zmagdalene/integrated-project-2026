@@ -18,53 +18,68 @@ const passConfirm = document.getElementById("adminConfirm");
 
 console.log('javascript working');
 
+function hide(element) {
+    element.classList.add('hidden');
+    element.classList.remove('flex');
+    return;
+}
+
+function show(element) {
+    element.classList.remove('hidden');
+    element.classList.add('flex');
+    return;
+}
 
 function toggle(element) {
     element.classList.toggle('hidden');
     element.classList.toggle('flex');
 }
 
+adminButton.addEventListener("click", () => {
+    showPopup(currentState);
+});
+
 function showPopup(state) {
     const target = document.getElementById(state);
-    visibility(target);
+    toggle(target);
 
     cards.forEach(card => {
-        visibility(card);
+        toggle(card);
     });
 
     if (state === "defaultDisplay") {
-        visibility(overlay);
+        toggle(overlay);
     }
     currentState = state;
 }
 
 exit.forEach(exit => {
     exit.addEventListener("click", () => {
-        visibility(overlay);
+        toggle(overlay);
         if (defaultDisplay.classList.contains('flex')) {
-            visibility(defaultDisplay);
-            visibility(cards);
+            toggle(defaultDisplay);
+            toggle(cards);
         } else if (adminDisplay.classList.contains('flex')) {
-            visibility(adminDisplay);
+            toggle(adminDisplay);
         } else if (noAdminDisplay.classList.contains('flex')) {
-            visibility(noAdminDisplay);
+            toggle(noAdminDisplay);
         }
     });
 });
 
 adminCard.forEach(card => {
     card.addEventListener("click", () => {
-        visibility(defaultDisplay);
-        visibility(cards);
-        visibility(adminDisplay);
+        toggle(defaultDisplay);
+        toggle(cards);
+        toggle(adminDisplay);
     });
 });
 
 noAdminCard.forEach(card => {
     card.addEventListener("click", () => {
-        visibility(defaultDisplay);
-        visibility(cards);
-        visibility(noAdminDisplay);
+        toggle(defaultDisplay);
+        toggle(cards);
+        toggle(noAdminDisplay);
     });
 })
 

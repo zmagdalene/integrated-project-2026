@@ -45,38 +45,8 @@ try {
     </div>
 
     <div id="overlay" class="hidden">
-        <?php foreach ($adminPopups as $key => $content) { ?>
 
-            <div class="adminPopup hidden" id="<?= h($key) ?>">
-                <div class="head">
-                    <h3><?= h($common['logo']) ?></h3>
-                    <div class="exit">
-                        <h4><?= h($common['exit']) ?></h4>
-                    </div>
-                    <p><?= h($content['text']) ?></p>
-                </div>
-
-                <div class="cards hidden">
-                    <?php foreach ($content['cards'] as $type => $item) { ?>
-                        <div class="card <?= h($type) ?>">
-                            <i class="<?= h($item['icon']) ?>"></i>
-                            <h4><?= h($item['text']) ?></h4>
-                        </div>
-                    <?php } ?>
-                </div>
-
-                <i class="<?= h($content['icon']) ?>"></i>
-                <div class="input">
-                    <input type="text" value="" id="passwordInput">
-                    <?php if (isset($content['adminConfirm'])) { ?>
-                        <button id="adminConfirm"><?= h($content['adminConfirm']) ?></button>
-                    <?php } ?>
-                </div>
-            </div>
-
-        <?php } ?>
-
-        <!-- <div class="adminPopup hidden" id="adminDisplay">
+        <div class="adminPopup hidden" id="adminDisplay">
             <div class="head">
                 <h3>TFJ</h3>
                 <div class="exit">
@@ -101,7 +71,7 @@ try {
                 <p>Please Contact TFJ@gmail.com for more info.</p>
             </div>
             <i class="fa-solid fa-paper-plane"></i>
-        </div> -->
+        </div>
 
     </div>
 
@@ -152,16 +122,8 @@ try {
                         <p class="category"><?= h($category->name) ?></p>
                     </div>
                 </a>
-                <div id="adminMode">
-                    <?php foreach ($adminControls as $action => $item) { ?>
-                        <a href="<?= h($item['url']) ?>?id=<?= h($s->id) ?>">
-                            <div class="button <?= $action ?>">
-                                <i class="<?= h($item['icon']) ?>"></i>
-                                <p><?= h($item['text']) ?></p>
-                            </div>
-                        </a>
-                    <?php } ?>
-                </div>
+
+                <?php include "./inc/admin_buttons.php" ?>
 
             <?php } ?>
         </div>
@@ -189,16 +151,7 @@ try {
                     </a>
                 </div>
 
-                <div id="adminMode">
-                    <?php foreach ($adminControls as $action => $item) { ?>
-                        <a href="<?= h($item['url']) ?>?id=<?= h($s->id) ?>">
-                            <div class="button <?= $action ?>">
-                                <i class="<?= h($item['icon']) ?>"></i>
-                                <p><?= h($item['text']) ?></p>
-                            </div>
-                        </a>
-                    <?php } ?>
-                </div>
+                <?php include "./inc/admin_buttons.php" ?>
 
             <?php } ?>
 
@@ -237,16 +190,7 @@ try {
                     </div>
                 </a>
 
-                <div id="adminMode">
-                    <?php foreach ($adminControls as $action => $item) { ?>
-                        <a href="<?= h($item['url']) ?>?id=<?= h($s->id) ?>">
-                            <div class="button <?= $action ?>">
-                                <i class="<?= h($item['icon']) ?>"></i>
-                                <p><?= h($item['text']) ?></p>
-                            </div>
-                        </a>
-                    <?php } ?>
-                </div>
+                <?php include "./inc/admin_buttons.php" ?>
 
             </div>
         <?php } ?>
@@ -284,16 +228,7 @@ try {
                     </div>
                 </a>
 
-                <div id="adminMode">
-                    <?php foreach ($adminControls as $action => $item) { ?>
-                        <a href="<?= h($item['url']) ?>?id=<?= h($s->id) ?>">
-                            <div class="button <?= $action ?>">
-                                <i class="<?= h($item['icon']) ?>"></i>
-                                <p><?= h($item['text']) ?></p>
-                            </div>
-                        </a>
-                    <?php } ?>
-                </div>
+                <?php include "./inc/admin_buttons.php" ?>
 
             </div>
         <?php } ?>
@@ -339,16 +274,7 @@ try {
                     </div>
                 </a>
 
-                <div id="adminMode">
-                    <?php foreach ($adminControls as $action => $item) { ?>
-                        <a href="<?= h($item['url']) ?>?id=<?= h($s->id) ?>">
-                            <div class="button <?= $action ?>">
-                                <i class="<?= h($item['icon']) ?>"></i>
-                                <p><?= h($item['text']) ?></p>
-                            </div>
-                        </a>
-                    <?php } ?>
-                </div>
+                <?php include "./inc/admin_buttons.php" ?>
 
             <?php } ?>
         </div>
@@ -375,16 +301,7 @@ try {
 
                     </a>
 
-                    <div id="adminMode">
-                        <?php foreach ($adminControls as $action => $item) { ?>
-                            <a href="<?= h($item['url']) ?>?id=<?= h($s->id) ?>">
-                                <div class="button <?= $action ?>">
-                                    <i class="<?= h($item['icon']) ?>"></i>
-                                    <p><?= h($item['text']) ?></p>
-                                </div>
-                            </a>
-                        <?php } ?>
-                    </div>
+                    <?php include "./inc/admin_buttons.php" ?>
 
                 </div>
 
@@ -425,16 +342,7 @@ try {
                     </div>
                 </a>
 
-                <div id="adminMode">
-                    <?php foreach ($adminControls as $action => $item) { ?>
-                        <a href="<?= h($item['url']) ?>?id=<?= h($s->id) ?>">
-                            <div class="button <?= $action ?>">
-                                <i class="<?= h($item['icon']) ?>"></i>
-                                <p><?= h($item['text']) ?></p>
-                            </div>
-                        </a>
-                    <?php } ?>
-                </div>
+                <?php include "./inc/admin_buttons.php" ?>
 
             </div>
         <?php } ?>
@@ -475,16 +383,7 @@ try {
                     </div>
                 </a>
 
-                <div id="adminMode">
-                    <?php foreach ($adminControls as $action => $item) { ?>
-                        <a href="<?= h($item['url']) ?>?id=<?= h($s->id) ?>">
-                            <div class="button <?= $action ?>">
-                                <i class="<?= h($item['icon']) ?>"></i>
-                                <p><?= h($item['text']) ?></p>
-                            </div>
-                        </a>
-                    <?php } ?>
-                </div>
+                <?php include "./inc/admin_buttons.php" ?>
 
             <?php } ?>
 
@@ -518,16 +417,7 @@ try {
                     </div>
                 </a>
 
-                <div id="adminMode">
-                    <?php foreach ($adminControls as $action => $item) { ?>
-                        <a href="<?= h($item['url']) ?>?id=<?= h($s->id) ?>">
-                            <div class="button <?= $action ?>">
-                                <i class="<?= h($item['icon']) ?>"></i>
-                                <p><?= h($item['text']) ?></p>
-                            </div>
-                        </a>
-                    <?php } ?>
-                </div>
+                <?php include "./inc/admin_buttons.php" ?>
 
             <?php } ?>
 
@@ -556,16 +446,7 @@ try {
                     </div>
                 </a>
 
-                <div id="adminMode">
-                    <?php foreach ($adminControls as $action => $item) { ?>
-                        <a href="<?= h($item['url']) ?>?id=<?= h($s->id) ?>">
-                            <div class="button <?= $action ?>">
-                                <i class="<?= h($item['icon']) ?>"></i>
-                                <p><?= h($item['text']) ?></p>
-                            </div>
-                        </a>
-                    <?php } ?>
-                </div>
+                <?php include "./inc/admin_buttons.php" ?>
 
             </div>
         <?php } ?>

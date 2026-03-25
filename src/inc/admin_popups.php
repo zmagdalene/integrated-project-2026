@@ -30,5 +30,3 @@ return [
         ]
     ]
 ];
-
-echo "popups";
