@@ -77,7 +77,7 @@ try {
 
                     <div class="formRow authorRow">
 
-                        <div class="input">
+                        <div class="input inputSelect">
                             <label for="author_id">Author:</label>
                             <div>
                                 <select name="author_id" id="author_id" required>
@@ -91,10 +91,18 @@ try {
                         </div>
 
                         <div class="input textInput hidden">
-                            <label for="author_id">New Author:</label>
+                            <label for="first_name">First Name:</label>
                             <div>
-                                <input type="text" id="author_id" name="author_id" value="<?= old('author_id') ?>" required>
-                                <p class="error"><?= error('author_id') ?></p>
+                                <input type="text" id="first_name" name="first_name" value="<?= old('first_name') ?>" required>
+                                <p class="error"><?= error('first_name') ?></p>
+                            </div>
+                        </div>
+
+                        <div class="input textInput hidden">
+                            <label for="last_name">Last Name:</label>
+                            <div>
+                                <input type="text" id="last_name" name="last_name" value="<?= old('last_name') ?>" required>
+                                <p class="error"><?= error('last_name') ?></p>
                             </div>
                         </div>
 
@@ -102,9 +110,9 @@ try {
 
                     </div>
 
-                    <div class="formRow authorRow">
+                    <div class="formRow categoryRow">
 
-                        <div class="input">
+                        <div class="input inputSelect">
                             <label for="category_id">Category:</label>
                             <div>
                                 <select name="category_id" id="category_id" required>
@@ -125,11 +133,13 @@ try {
                             </div>
                         </div>
 
+                        <button type="button" class="selectButton">New Category</button>
+
                     </div>
 
                     <div class="formRow locationRow">
 
-                        <div class="input">
+                        <div class="input inputSelect">
                             <label for="location_id">Location:</label>
                             <div>
                                 <select name="location_id" id="location_id" required>
@@ -149,6 +159,8 @@ try {
                                 <p class="error"><?= error('location_id') ?></p>
                             </div>
                         </div>
+
+                        <button type="button" class="selectButton">New Location</button>
 
                     </div>
 

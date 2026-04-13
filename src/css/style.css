@@ -384,22 +384,35 @@ a.edit:hover {
 
 /* create/update */
 
-.selects {
-}
+.selects {}
 
 .formRow {
-    height: fit-content;
     gap: 10px;
     display: flex;
-    align-items: flex-end;
 }
 
 .selectButton {
-    margin-bottom: 5px;
+    margin-top: 19px;
     cursor: pointer;
+    display: flex;
+    justify-self: center;
+    align-self: flex-start;
 }
 
 p.error {
+    color: #b00020;
+}
+
+.list {
+    gap: 15px;
+    height: 73vh;
+    margin-top: 20px;
+    cursor: pointer;
+    display: flex;
+    flex-flow: column wrap;
+}
+
+.list p:hover {
     color: #b00020;
 }
 
