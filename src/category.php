@@ -27,9 +27,9 @@ try {
 </head>
 
 <body>
-    <?php require_once "./inc/navbar.php"; ?>
+    <?php require_once "./lib/navbar.php"; ?>
     <?php require_once "./inc/flash_message.php"; ?>
-    
+
     <h1>Stories: <?= $category->name ?></h1>
     <?php foreach ($stories as $s) { ?>
         <div>

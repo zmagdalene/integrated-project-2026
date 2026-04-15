@@ -12,6 +12,9 @@ try {
 
     $techStories = Story::findByCategory(1, $options = ['limit' => 3]);
 
+    $govStories = Story::findByCategory(3, $options = ['limit' => 4, 'offset' => 1]);
+    $topGovStory = Story::findByCategory(3, $options = ['limit' => 1]);
+
     $businessStories = Story::findByCategory(2, $options = ['limit' => 3]);
 
     $stockStories = Story::findByCategory(5, $options = ['limit' => 4]);
@@ -19,9 +22,7 @@ try {
 
     $energyStories = Story::findByCategory(4, $options = ['limit' => 3]);
 
-    $financeStories = Story::findAll($options = ['limit' => 4]);
-
-    $financeStories2 = Story::findAll($options = ['limit' => 4, 'offset' => 4]);
+    $editorsPick = Story::findAll($options = ['limit' => 8, 'order_by' => 'updated_at', 'order' => 'DESC']);
 
     $category = Category::findAll();
     $author = Author::findAll();
@@ -354,103 +355,42 @@ try {
         <div class="width-12 greyLine"></div>
 
         <div class="width-12 title left">
-            <h1>PERSONAL FINANCE</h1>
+            <h1>MORE NEWS</h1>
         </div>
 
-        <div class="width-4 trending">
+        <div class="width-12">
+            <div class="width-4 trending">
 
-            <?php foreach ($financeStories as $s) { ?>
+                <?php foreach ($editorsPick as $e) { ?>
 
-                <a href="view_story.php?id=<?= h($s->id) ?>">
-                    <div class="story">
-                        <div class="pic">
-                            <img src="/<?= $s->img_url ?>">
-                        </div>
-                        <div class="textHolder">
-
-                            <div class="category">
-                                <?php $category = Category::findById($s->category_id) ?>
-                                <h6 class="red"><?= $category->name ?></h6>
-                                <?php $author = Author::findById($s->author_id) ?>
-                                <h6>/ <?= $author->first_name . " " . $author->last_name ?></h6>
+                    <a href="view_story.php?id=<?= h($e->id) ?>">
+                        <div class="story">
+                            <div class="pic">
+                                <img src="/<?= $e->img_url ?>">
                             </div>
+                            <div class="textHolder">
 
-                            <h5><?= $s->short_headline ?></h5>
-                            <p class="time">2h ago</p>
+                                <div class="category">
+                                    <?php $category = Category::findById($e->category_id) ?>
+                                    <h6 class="red"><?= $category->name ?></h6>
+                                    <?php $author = Author::findById($e->author_id) ?>
+                                    <h6>/ <?= $author->first_name . " " . $author->last_name ?></h6>
+                                </div>
 
-                        </div>
+                                <h5><?= $e->short_headline ?></h5>
+                                <p class="time">2h ago</p>
 
-                    </div>
-                </a>
-
-                <?php include "./inc/admin_buttons.php" ?>
-
-            <?php } ?>
-
-        </div>
-
-        <div class="width-4 trending">
-
-            <?php foreach ($financeStories2 as $s) { ?>
-
-                <a href="view_story.php?id=<?= h($s->id) ?>">
-                    <div class="story">
-
-                        <div class="pic">
-                            <img src="/<?= $s->img_url ?>">
-                        </div>
-
-                        <div class="textHolder">
-
-                            <div class="category">
-                                <?php $category = Category::findById($s->category_id) ?>
-                                <h6 class="red"><?= $category->name ?></h6>
-                                <?php $author = Author::findById($s->author_id) ?>
-                                <h6>/ <?= $author->first_name . " " . $author->last_name ?></h6>
-                            </div>
-
-                            <h5><?= $s->short_headline ?></h5>
-                            <p class="time">2h ago</p>
-
-                        </div>
-
-                    </div>
-                </a>
-
-                <?php include "./inc/admin_buttons.php" ?>
-
-            <?php } ?>
-
-        </div>
-
-        <?php foreach ($topStory as $s) { ?>
-            <div class="width-4 newsComp">
-
-                <a href="view_story.php?id=<?= h($s->id) ?>">
-                    <div class="content">
-                        <img src="/<?= $s->img_url ?>">
-
-                        <div class="textHolder">
-
-                            <div class="redLine"></div>
-
-                            <h2><?= h($s->headline) ?></h2>
-
-                            <div class="text">
-                                <p><?= h($s->subheadline) ?></p>
-                                <?php $author = Author::findById($s->author_id); ?>
-                                <h6 class="author">- <?= h($author->first_name . " " . $author->last_name) ?></h6>
                             </div>
 
                         </div>
-                    </div>
-                </a>
+                    </a>
 
-                <?php include "./inc/admin_buttons.php" ?>
+                    <?php include "./inc/admin_buttons.php" ?>
+
+                <?php } ?>
 
             </div>
-        <?php } ?>
-
+        </div>
     </div>
 
     <div class="footer">

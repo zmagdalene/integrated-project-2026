@@ -61,7 +61,7 @@ try {
 
         <!-- TODO: Add fields for short_headline, subheadline, img_url, author, category, and location -->
 
-        <button type="submit">Create Story</button>
+        <button type="submit" class="button">Create Story</button>
     </form>
 </body>
 

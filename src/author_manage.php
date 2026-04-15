@@ -6,7 +6,7 @@ require_once './lib/session.php';
 startSession();
 
 try {
-    $authors = Author::findAll();
+    $authors = Author::findAll($options = ['order']);
 } catch (Exception $e) {
     echo $e->getMessage();
     exit();
@@ -24,7 +24,7 @@ try {
     <?php require_once "./lib/navbar.php"; ?>
 
     <div class="container">
-        <div class="width-12">
+        <div class="width-12 flash-message">
             <?php require_once "./inc/flash_message.php"; ?>
         </div>
     </div>
@@ -59,20 +59,29 @@ try {
                     </div>
 
                 </div>
-                <button type="submit" class="selectButton">Upload Author</button>
+                <button type="submit" class="button selectButton">Upload Author</button>
             </form>
         </div>
 
         <div class="widwth-2"></div>
 
         <div class="width-6">
-            <h3>Delete Author</h3>
-            <div class="list">
-                <?php foreach ($authors as $a) { ?>
-                    <a href="author_delete.php?id=<?= h($a->id) ?>">
-                        <p><?= h($a->first_name), " ", h($a->last_name) ?> </p>
-                    </a>
-                <?php } ?>
+            <div class="dropdown">
+                <div class="dropdownButton">
+                    <h3>Delete Author</h3>
+                </div>
+
+                <div class="list hidden">
+                    <ul>
+                        <li>
+                            <?php foreach ($authors as $a) { ?>
+                                <a href="author_delete.php?id=<?= h($a->id) ?>">
+                                    <p><?= h($a->first_name), " ", h($a->last_name) ?> </p>
+                                </a>
+                            <?php } ?>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>

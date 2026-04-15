@@ -1,4 +1,4 @@
-<div id="adminMode">
+<div id="adminMode" class="hidden">
     <?php foreach ($adminControls as $action => $item) { ?>
         <a href="<?= h($item['url']) ?>?id=<?= h($s->id) ?>" class="button <?= $action ?>">
             <i class="<?= h($item['icon']) ?>"></i>

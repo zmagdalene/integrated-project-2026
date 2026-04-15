@@ -40,98 +40,101 @@ try {
         <div class="width-12">
             <?php require './inc/flash_message.php'; ?>
         </div>
-        <div class="width-12">
-            <h1>Edit Story</h1>
-        </div>
         <div class="container">
-            <div class="width-8">
-                <form action="story_store.php?id=<?= $story->id ?>" method="POST" enctype="multipart/form-data" novalidate>
+            <div class="width-12 title">
+                <h1>Edit Story</h1>
+            </div>
 
-                    <input type="hidden" id="id" name="id" value="<?= old('id', $story->id) ?>">
+            <div class="width-8 inputForm">
+                <div class="form">
+                    <form action="story_store.php?id=<?= $story->id ?>" method="POST" enctype="multipart/form-data" novalidate>
 
-                    <div class="input">
-                        <label for="headline">Headline:</label>
-                        <div>
-                            <input type="text" id="headline" name="headline" value="<?= old('headline', $story->headline) ?>" required>
-                            <p class="error"><?= error('headline') ?></p>
+                        <input type="hidden" id="id" name="id" value="<?= old('id', $story->id) ?>">
+
+                        <div class="input">
+                            <label for="headline">Headline:</label>
+                            <div>
+                                <input type="text" id="headline" name="headline" value="<?= old('headline', $story->headline) ?>" required>
+                                <p class="error"><?= error('headline') ?></p>
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="input">
-                        <label for="short_headline">Short Headline:</label>
-                        <div>
-                            <input type="text" id="short_headline" name="short_headline" value="<?= old('short_headline', $story->short_headline) ?>" required>
-                            <p class="error"><?= error('short_headline') ?></p>
+                        <div class="input">
+                            <label for="short_headline">Short Headline:</label>
+                            <div>
+                                <input type="text" id="short_headline" name="short_headline" value="<?= old('short_headline', $story->short_headline) ?>" required>
+                                <p class="error"><?= error('short_headline') ?></p>
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="input">
-                        <label for="subheadline">Subheadline:</label>
-                        <div>
-                            <input type="text" id="subheadline" name="subheadline" value="<?= old('subheadline', $story->subheadline) ?>" required>
-                            <p class="error"><?= error('subheadline') ?></p>
+                        <div class="input">
+                            <label for="subheadline">Subheadline:</label>
+                            <div>
+                                <input type="text" id="subheadline" name="subheadline" value="<?= old('subheadline', $story->subheadline) ?>" required>
+                                <p class="error"><?= error('subheadline') ?></p>
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="input">
-                        <label for="article">Article:</label>
-                        <div>
-                            <textarea name="article" id="article" rows="5" required><?= old('article', $story->article) ?></textarea>
-                            <p class="error"><?= error('article') ?></p>
+                        <div class="input">
+                            <label for="article">Article:</label>
+                            <div>
+                                <textarea name="article" id="article" rows="5" required><?= old('article', $story->article) ?></textarea>
+                                <p class="error"><?= error('article') ?></p>
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="input">
-                        <label for="author_id">Author:</label>
-                        <div>
-                            <select name="author_id" id="author_id" required>
-                                <option value="">---Select Author---</option>
-                                <?php foreach ($authors as $a) { ?>
-                                    <option value="<?= h($a->id) ?>" <?= chosen('author_id', $a->id, $story->author_id) ? 'selected' : '' ?>><?= h($a->first_name), " ", h($a->last_name) ?></option>
-                                <?php } ?>
-                            </select>
-                            <p class="error"><?= error('author_id') ?></p>
+                        <div class="input">
+                            <label for="author_id">Author:</label>
+                            <div>
+                                <select name="author_id" id="author_id" required>
+                                    <option value="">---Select Author---</option>
+                                    <?php foreach ($authors as $a) { ?>
+                                        <option value="<?= h($a->id) ?>" <?= chosen('author_id', $a->id, $story->author_id) ? 'selected' : '' ?>><?= h($a->first_name), " ", h($a->last_name) ?></option>
+                                    <?php } ?>
+                                </select>
+                                <p class="error"><?= error('author_id') ?></p>
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="input">
-                        <label for="category_id">Category:</label>
-                        <div>
-                            <select name="category_id" id="category_id" required>
-                                <option value="">---Select Category---</option>
-                                <?php foreach ($categories as $c) { ?>
-                                    <option value="<?= h($c->id) ?>" <?= chosen('category_id', $c->id, $story->category_id) ? 'selected' : '' ?>><?= h($c->name) ?></option>
-                                <?php } ?>
-                            </select>
-                            <p class="error"><?= error('category_id') ?></p>
+                        <div class="input">
+                            <label for="category_id">Category:</label>
+                            <div>
+                                <select name="category_id" id="category_id" required>
+                                    <option value="">---Select Category---</option>
+                                    <?php foreach ($categories as $c) { ?>
+                                        <option value="<?= h($c->id) ?>" <?= chosen('category_id', $c->id, $story->category_id) ? 'selected' : '' ?>><?= h($c->name) ?></option>
+                                    <?php } ?>
+                                </select>
+                                <p class="error"><?= error('category_id') ?></p>
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="input">
-                        <label for="location_id">Location:</label>
-                        <div>
-                            <select name="location_id" id="location_id" required>
-                                <option value="">---Select Location---</option>
-                                <?php foreach ($locations as $l) { ?>
-                                    <option value="<?= h($l->id) ?>" <?= chosen('location_id', $l->id, $story->location_id) ? 'selected' : '' ?>><?= h($l->name) ?></option>
-                                <?php } ?>
-                            </select>
-                            <p class="error"><?= error('location_id') ?></p>
+                        <div class="input">
+                            <label for="location_id">Location:</label>
+                            <div>
+                                <select name="location_id" id="location_id" required>
+                                    <option value="">---Select Location---</option>
+                                    <?php foreach ($locations as $l) { ?>
+                                        <option value="<?= h($l->id) ?>" <?= chosen('location_id', $l->id, $story->location_id) ? 'selected' : '' ?>><?= h($l->name) ?></option>
+                                    <?php } ?>
+                                </select>
+                                <p class="error"><?= error('location_id') ?></p>
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="input">
-                        <label for="img_url" class="special">Story Cover Image:</label>
-                        <div>
-                            <input type="file" name="img_url" id="img_url" accept="image/*">
-                            <p class="error"><?= error('img_url') ?></p>
+                        <div class="input">
+                            <label for="img_url" class="special">Story Cover Image:</label>
+                            <div>
+                                <input type="file" name="img_url" id="img_url" accept="image/*">
+                                <p class="error"><?= error('img_url') ?></p>
+                            </div>
                         </div>
-                    </div>
 
-                    <!-- TODO: Add fields for short_headline, subheadline, img_url, author, category, and location -->
+                        <!-- TODO: Add fields for short_headline, subheadline, img_url, author, category, and location -->
 
-                    <button type="submit">Update Story</button>
-                </form>
+                        <button type="submit" class="button">Update Story</button>
+                    </form>
+                </div>
             </div>
 
             <div class="width-4 preview">
