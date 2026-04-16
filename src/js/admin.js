@@ -1,9 +1,14 @@
+let state = 'default';
+let mode = 'user';
+
 let adminBtn = document.querySelector('#adminButton');
 let adminDlg = document.querySelector('#adminPopup');
+
 let cards = document.querySelector('#popupCards');
 let popupText = document.querySelector('#popupText');
 let icon = document.querySelector('#popupIcon');
 let input = document.querySelector('#popupInput');
+
 let adminMode = document.querySelectorAll('#adminMode');
 
 let adminPass = 'Password123';
@@ -11,117 +16,174 @@ let target = null;
 let card = null;
 let type = null;
 
-function resetAdminPopup() {
-    type = 'default';
-    popupText.textContent = '';
-    cards.style.display = '';
-    icon.className = '';
-    input.innerHTML = '';
+function loadPopups() {
+    const popup = popupData.popups;
+
+    if (state === 'default') {
+        const data = popup.default;
+        popupText.textContent = data.text;
+        show(cards);
+        icon.className = data.icon;
+        input.innerHTML = '';
+    }
+
+    if (state === 'login') {
+        const data = popup.login;
+        popupText.textContent = data.text;
+        hide(cards);
+        icon.className = data.icon;
+        input.innerHTML = `
+                <input type="text"id="passInput" placeholder="Enter password">
+                <button id="passConfirm" class="button">${data.adminConfirm}</button>
+                <p class="error passError hidden">Password Incorrect.</p>
+            `;
+    }
+
+    if (state === 'noAdmin') {
+        const data = popup.noAdmin;
+        popupText.textContent = data.text;
+        hide(cards);
+        icon.className = data.icon;
+        input.innerHTML = '';
+    }
+
+    if (state === 'admin') {
+        const data = popupData.admin;
+        mode = 'admin';
+        popupText.textContent = data.text;
+        show(cards);
+        icon.className = data.icon;
+        input.innerHTML = '';
+        cards.innerHTML = '';
+
+        for (const type in data.cards) {
+            const item = data.cards[type];
+
+            cards.innerHTML += `
+        <a href="${item.href}" class="card-link">
+            <div class="card" data-type="${type}">
+                <i class="${item.icon}"></i>
+                <h4>${item.text}</h4>
+            </div>
+        </a>`;
+        }
+    }
 }
 
-function passCheck() {
-    let passInput = input.querySelector('#passInput');
-    let passError = input.querySelector('.passError');
-
-    console.log('clicked confirm button');
-
-    if (!passInput) {
-        return;
-    }
-
-    if (!passError) {
-        return;
-    }
-
-    if (passInput.value === adminPass) {
-        adminDlg.close();
-        adminMode.forEach(adminControl => {
-            visibility(adminControl);
-        })
-
+function loadState() {
+    if (mode === 'admin') {
+        state = 'admin';
     } else {
-        show(passError);
+        state = 'default';
     }
 }
 
 adminBtn.addEventListener('click', () => {
     adminDlg.showModal();
-    console.log('clicked!');
+    loadState();
+    loadPopups();
 })
 
 adminDlg.addEventListener('click', (e) => {
-    target = e.target;
+    let target = e.target;
 
     if (target.closest('.exit')) {
         adminDlg.close();
-        type = 'default';
+        loadState();
         return;
     }
 
     if (target.closest('#passConfirm')) {
-        passCheck();
+        let passInput = input.querySelector('#passInput');
+        let passError = input.querySelector('.passError');
+
+        console.log('clicked confirm button');
+
+        if (!passInput) return;
+
+        if (passInput.value === adminPass) {
+            adminDlg.close();
+            mode = 'admin';
+            loadState();
+            loadPopups();
+
+            adminMode.forEach(adminControl => {
+                visibility(adminControl);
+            })
+        } else {
+            show(passError);
+            return;
+        }
         return;
     }
-
     card = target.closest('.card');
-    if (!card) return;
-
+    if (!card || state !== 'default') return;
     type = card.dataset.type;
 
-    if (!adminDlg.open) {
-        type = 'default';
+    if (type === 'login') {
+        state = 'login';
     }
 
-    let popupDisplay = type === 'admin' ? popupData.adminDisplay : popupData.noAdminDisplay;
-
-    popupText.textContent = popupDisplay.text;
-    cards.style.display = 'none';
-    icon.className = popupDisplay.icon || '';
-
-    if (popupDisplay.adminConfirm) {
-        input.innerHTML = `
-                <input type="text"id="passInput" placeholder="Enter password">
-                <button id="passConfirm" class="button">${popupDisplay.adminConfirm}</button>
-                <p class="error passError hidden">Password Incorrect.</p>
-            `;
-    } else {
-        input.innerHTML = '';
+    if (type === 'noAdmin') {
+        state = 'noAdmin';
     }
+
+    loadPopups();
 })
 
-adminDlg.addEventListener('close', resetAdminPopup);
-console.log('jVA');
+adminDlg.addEventListener('close', () => {
+    loadState();
+})
 
 
+// // function adminPopups() {
+// //     adminDlg.addEventListener('click', (e) => {
+// //         e.preventDefault();
+// //         target = e.target;
 
-// if (deleteElement !== null && deleteDialog !== null) {
-//     let target = null;
-//     let card = null;
+// //         if (target.closest('.exit')) {
+// //             adminDlg.close();
+// //             type = 'default';
+// //             return;
+// //         }
 
-//     deleteElement.addEventListener('click', function (e) {
-//         target = e.target;
-//         card = target.closest('.book');
+// //         if (target.closest('#passConfirm')) {
+// //             passCheck();
+// //             return;
+// //         }
 
-//         let deleteBtn = target.closest('.deleteBtn');
-//         highlight(card);
+// //         card = target.closest('.card');
+// //         if (!card) return;
 
-//         if (deleteBtn !== null) {
-//             e.preventDefault();
-//             bookTitle.textContent = card.dataset.title;
-//             setTimeout(() => {
-//                 deleteDialog.showModal();
-//             }, 300);
-//         }
-//     });
+// //         type = card.dataset.type;
 
-//     confirmBtn.addEventListener('click', function (e) {
-//         deleteDialog.close();
-//         setTimeout(() => {
-//             window.location = target.href;
-//         }, 300);
-//     });
-//     cancelBtn.addEventListener('click', function (e) {
-//         deleteDialog.close();
-//         highlight(card);
-//     });
+// //         if (!adminDlg.open) {
+// //             type = 'default';
+// //         }
+
+// //         let popupDisplay = type === 'admin' ? popupData.adminDisplay : popupData.noAdminDisplay;
+
+// //         popupText.textContent = popupDisplay.text;
+// //         cards.style.display = 'none';
+// //         icon.className = popupDisplay.icon || '';
+
+// //         if (popupDisplay.adminConfirm) {
+// //             input.innerHTML = `
+// //                 <input type="text"id="passInput" placeholder="Enter password">
+// //                 <button id="passConfirm" class="button">${popupDisplay.adminConfirm}</button>
+// //                 <p class="error passError hidden">Password Incorrect.</p>
+// //             `;
+// //         } else {
+// //             input.innerHTML = '';
+// //         }
+// //     })
+// //     adminDlg.addEventListener('close', resetPopups);
+// // }
+
+// function adminControlsPopup() {
+
 // }
+// if (adminState === 'user') {
+//     adminPopups();
+// }
+// console.log('jVA');

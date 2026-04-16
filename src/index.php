@@ -4,8 +4,7 @@ require_once "./lib/global.php";
 $adminControls = require_once "./inc/admin_controls.php";
 $adminData = require_once "./inc/admin_popups.php";
 $common = $adminData['common'];
-$adminPopups = $adminData['popups'];
-$default = $adminPopups['defaultDisplay'];
+$default = $adminData['popups']['default'];
 
 try {
     $stories = Story::findAll($options = ['limit' => 3, 'offset' => 1]);
@@ -44,11 +43,15 @@ try {
 </head>
 
 <body>
-    <div class="flash-message">
-        <?php require_once "./inc/flash_message.php"; ?>
+    <?php include './inc/deleteDialog.php' ?>
+
+    <div class="banner">
+        <div class="flash-message">
+            <?php require_once "./inc/flash_message.php"; ?>
+        </div>
     </div>
 
-    <dialog class="adminPopup" id="adminPopup">
+    <dialog id="adminPopup" data-mode="user">
 
         <div class="head">
             <h3><?= h($common['logo']) ?></h3>
@@ -72,67 +75,6 @@ try {
         <div class="input" id="popupInput"></div>
 
     </dialog>
-
-    <!-- <div class="adminPopup hidden" id="adminDisplay">
-
-
-    <dialog class="adminPopup hidden" id="adminDisplay">
-        <div class="head">
-            <h3>TFJ</h3>
-            <div class="exit">
-                <h4>X</h4>
-            </div>
-            <p>Please Enter Admin Password</p>
-        </div>
-        <i class="fa-solid fa-lock"></i>
-
-        <div>
-            <input type="text" value="" id="passwordInput">
-            <button id="adminConfirm">Confirm</button>
-        </div>
-    </dialog>
-
-    <dialog class="adminPopup hidden" id="noAdminDisplay">
-        <div class="head">
-            <h3>TFJ</h3>
-            <div class="exit">
-                <h4>X</h4>
-            </div>
-            <p>Please Contact TFJ@gmail.com for more info.</p>
-        </div>
-        <i class="fa-solid fa-paper-plane"></i>
-    </dialog>
-
-    <div id="overlay" class="hidden">
-
-        <div class="adminPopup hidden" id="adminDisplay">
-            <div class="head">
-                <h3>TFJ</h3>
-                <div class="exit">
-                    <h4>X</h4>
-                </div>
-                <p>Please Enter Admin Password</p>
-            </div>
-            <i class="fa-solid fa-lock"></i>
-
-            <div>
-                <input type="text" value="" id="passwordInput">
-                <button id="adminConfirm">Confirm</button>
-            </div>
-        </div>
-
-        <div class="adminPopup hidden" id="noAdminDisplay">
-            <div class="head">
-                <h3>TFJ</h3>
-                <div class="exit">
-                    <h4>X</h4>
-                </div>
-                <p>Please Contact TFJ@gmail.com for more info.</p>
-            </div>
-            <i class="fa-solid fa-paper-plane"></i>
-        </div>
-
-    </div> -->
 
     <div id="adminButton">
         <img src="assets/button.png" alt="adminButton">
@@ -500,10 +442,11 @@ try {
             </div>
         </div>
         <script>
-            const popupData = <?= json_encode($adminPopups) ?>;
+            const popupData = <?= json_encode($adminData) ?>;
         </script>
         <script src="js/functions.js"></script>
         <script src="js/admin.js"></script>
+        <script src="js/delete.js"></script>
 </body>
 
 </html>

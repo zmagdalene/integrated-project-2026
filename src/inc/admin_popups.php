@@ -6,10 +6,10 @@ return [
     ],
 
     "popups" => [
-        "defaultDisplay" => [
+        "default" => [
             "text" => "Please Select One...",
             "cards" => [
-                "admin" => [
+                "login" => [
                     "icon" => "fa-solid fa-lock",
                     "text" => "I have admin permissions."
                 ],
@@ -19,14 +19,40 @@ return [
                 ]
             ]
         ],
-        "adminDisplay" => [
+        "login" => [
             "text" => "Please Enter Admin Password.",
             "icon" => "fa-solid fa-lock",
             "adminConfirm" => "Confirm"
         ],
-        "noAdminDisplay" => [
+        "noAdmin" => [
             "text" => "Please Contact TFJ@gmail.com for more info.",
             "icon" => "fa-solid fa-paper-plane"
+        ]
+    ],
+
+    "admin" => [
+        "text" => "Please Select One...",
+        "cards" => [
+            "createStory" => [
+                "icon" => "fa-solid fa-lock",
+                "text" => "Create Story",
+                "href" => "story_create.php"
+            ],
+            "manageAuthors" => [
+                "icon" => "fa-solid fa-lock-open",
+                "text" => "Manage Authors",
+                "href" => "author_manage.php"
+            ],
+            "createCategory" => [
+                "icon" => "fa-solid fa-lock",
+                "text" => "Create Category",
+                "href" => "category_create.php"
+            ],
+            "createLocation" => [
+                "icon" => "fa-solid fa-lock-open",
+                "text" => "Create Location",
+                "href" => "location_create.php"
+            ]
         ]
     ]
 ];

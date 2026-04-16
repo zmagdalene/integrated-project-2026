@@ -57,6 +57,10 @@ h6 {
     margin-top: 0px;
 }
 
+a {
+    outline: none;
+}
+
 p {
     color: #505050;
     font-family: "Inria Serif", sans-serif;
@@ -116,6 +120,11 @@ p.author {
 }
 
 /* header */
+.banner {
+    background-color: #F5F5F5;
+    height: 100px;
+}
+
 .header {
     background-color: #C94242;
     box-shadow:
@@ -139,15 +148,6 @@ p.author {
 }
 
 /* admin display */
-#overlay {
-    background-color: rgba(55, 55, 55, 0.7);
-    position: fixed;
-    width: 100vw;
-    height: 100vh;
-    justify-content: center;
-    align-items: center;
-}
-
 #adminButton {
     width: 20px;
     height: 55px;
@@ -170,19 +170,10 @@ dialog {
     width: 400px;
     padding: 20px;
     text-align: center;
+    overflow: hidden;
 }
 
-/* .adminPopup {
-    background-color: #FFFFFF;
-    border: 1px solid;
-    border-radius: 6px;
-    width: 400px;
-    padding: 20px;
-    flex-flow: column wrap;
-    text-align: center;
-} */
-
-.adminPopup .exit {
+#adminPopup .exit {
     position: absolute;
     display: flex;
     justify-self: flex-end;
@@ -190,18 +181,23 @@ dialog {
     cursor: pointer;
 }
 
-.adminPopup .cards {
+#adminPopup .exit:hover {
+    color: #b00020;
+}
+
+#adminPopup .cards {
     margin-top: 50px;
     gap: 30px;
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-wrap: wrap;
 }
 
-.adminPopup .card {
+#adminPopup .card {
     background-color: #FFFFFF;
     border: 1px solid #D0D0D0;
-    border-radius: 3px;
+    border-radius: 12px;
     width: 160px;
     height: 223px;
     padding: 20px 5px;
@@ -210,14 +206,77 @@ dialog {
     cursor: pointer;
 }
 
-.adminPopup i {
+#adminPopup.adminPerms {
+    width: fit-content;
+}
+
+#adminPopup.adminPerms .card {
+    height: 180px;
+}
+
+#adminPopup i {
     font-size: 65px;
     margin: 10px auto;
 }
 
-.adminPopup .card:hover {
+#adminPopup .card:hover {
     box-shadow: 0 2px 4px 0 rgba(193, 114, 114, 0.75);
     transform: translateY(-5%);
+}
+
+/* deletePopup */
+/* dialog {
+    background-color: var(#ffffff);
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    padding: 20px;
+    width: 500px;
+    height: 195px;
+    text-align: center;
+    /* justify-content: space-between;
+	flex-flow: column wrap;
+} */
+
+/* dialog h2 {
+    color: var(--txt);
+    font-size: 23px;
+    line-height: normal;
+}
+
+#dlgBookTitle {
+    font-family: "IBM Plex Serif";
+    font-weight: 300;
+    color: var(--title);
+}
+
+dialog p {
+    color: #b00020;
+} */
+
+.largeBtn {
+    border: 1px solid;
+    border-radius: 6px;
+    width: 48%;
+    height: 35px;
+    cursor: pointer;
+    transition: all ease-in-out 0.2s;
+}
+
+.largeBtn:hover {
+    text-transform: uppercase;
+    font-weight: 500;
+    border-width: 2px;
+}
+
+#confirmBtn {
+    background-color: #b00020;
+    color: var(--card);
+}
+
+#confirmBtn:hover {
+    background-color: var(--card);
+    color: #b00020;
 }
 
 /* navbar */

@@ -35,3 +35,5 @@ if (deleteElement !== null && deleteDialog !== null) {
         highlight(card);
     });
 }
+
+deleteDialog.showModal();
