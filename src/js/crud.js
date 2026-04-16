@@ -1,7 +1,3 @@
-function visibility(element) {
-    element.classList.toggle('hidden');
-}
-
 const formRow = document.querySelectorAll('.formRow').forEach(row => {
     const btn = row.querySelector('.selectButton');
     const textInputS = row.querySelectorAll('.textInput');

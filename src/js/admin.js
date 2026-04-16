@@ -1,77 +1,127 @@
-const overlay = document.getElementById("overlay");
-const adminButton = document.querySelector(".adminButton img");
-const popup = document.querySelectorAll(".adminPopup");
-const cards = document.querySelectorAll('.cards');
-const exit = document.querySelectorAll(".adminPopup .exit");
+let adminBtn = document.querySelector('#adminButton');
+let adminDlg = document.querySelector('#adminPopup');
+let cards = document.querySelector('#popupCards');
+let popupText = document.querySelector('#popupText');
+let icon = document.querySelector('#popupIcon');
+let input = document.querySelector('#popupInput');
+let adminMode = document.querySelectorAll('#adminMode');
 
-// const defaultDisplay = document.getElementById("defaultDisplay");
-const adminDisplay = document.getElementById("adminDisplay");
-const noAdminDisplay = document.getElementById("noAdminDisplay");
+let adminPass = 'Password123';
+let target = null;
+let card = null;
+let type = null;
 
-const adminCard = document.querySelectorAll(".adminPopup .cards .admin");
-const noAdminCard = document.querySelectorAll(".adminPopup .cards .noAdmin");
-
-let adminPass = "Password123";
-let currentState = "defaultDisplay";
-const pass = document.getElementById("passwordInput");
-const passConfirm = document.getElementById("adminConfirm");
-
-console.log('javascript working');
-
-
-function toggle(element) {
-    element.classList.toggle('hidden');
-    element.classList.toggle('flex');
+function resetAdminPopup() {
+    type = 'default';
+    popupText.textContent = '';
+    cards.style.display = '';
+    icon.className = '';
+    input.innerHTML = '';
 }
 
-function showPopup(state) {
-    const target = document.getElementById(state);
-    visibility(target);
+function passCheck() {
+    let passInput = input.querySelector('#passInput');
+    let passError = input.querySelector('.passError');
 
-    cards.forEach(card => {
-        visibility(card);
-    });
+    console.log('clicked confirm button');
 
-    if (state === "defaultDisplay") {
-        visibility(overlay);
+    if (!passInput) {
+        return;
     }
-    currentState = state;
+
+    if (!passError) {
+        return;
+    }
+
+    if (passInput.value === adminPass) {
+        adminDlg.close();
+        adminMode.forEach(adminControl => {
+            visibility(adminControl);
+        })
+
+    } else {
+        show(passError);
+    }
 }
 
-exit.forEach(exit => {
-    exit.addEventListener("click", () => {
-        visibility(overlay);
-        if (defaultDisplay.classList.contains('flex')) {
-            visibility(defaultDisplay);
-            visibility(cards);
-        } else if (adminDisplay.classList.contains('flex')) {
-            visibility(adminDisplay);
-        } else if (noAdminDisplay.classList.contains('flex')) {
-            visibility(noAdminDisplay);
-        }
-    });
-});
-
-adminCard.forEach(card => {
-    card.addEventListener("click", () => {
-        visibility(defaultDisplay);
-        visibility(cards);
-        visibility(adminDisplay);
-    });
-});
-
-noAdminCard.forEach(card => {
-    card.addEventListener("click", () => {
-        visibility(defaultDisplay);
-        visibility(cards);
-        visibility(noAdminDisplay);
-    });
+adminBtn.addEventListener('click', () => {
+    adminDlg.showModal();
+    console.log('clicked!');
 })
 
-passConfirm.addEventListener("click", () => {
-    if (pass.value === adminPass) {
-        console.log("password correct!");
-    } else {
-        console.log("password incorrect.");
+adminDlg.addEventListener('click', (e) => {
+    target = e.target;
+
+    if (target.closest('.exit')) {
+        adminDlg.close();
+        type = 'default';
+        return;
     }
-});
+
+    if (target.closest('#passConfirm')) {
+        passCheck();
+        return;
+    }
+
+    card = target.closest('.card');
+    if (!card) return;
+
+    type = card.dataset.type;
+
+    if (!adminDlg.open) {
+        type = 'default';
+    }
+
+    let popupDisplay = type === 'admin' ? popupData.adminDisplay : popupData.noAdminDisplay;
+
+    popupText.textContent = popupDisplay.text;
+    cards.style.display = 'none';
+    icon.className = popupDisplay.icon || '';
+
+    if (popupDisplay.adminConfirm) {
+        input.innerHTML = `
+                <input type="text"id="passInput" placeholder="Enter password">
+                <button id="passConfirm" class="button">${popupDisplay.adminConfirm}</button>
+                <p class="error passError hidden">Password Incorrect.</p>
+            `;
+    } else {
+        input.innerHTML = '';
+    }
+})
+
+adminDlg.addEventListener('close', resetAdminPopup);
+console.log('jVA');
+
+
+
+// if (deleteElement !== null && deleteDialog !== null) {
+//     let target = null;
+//     let card = null;
+
+//     deleteElement.addEventListener('click', function (e) {
+//         target = e.target;
+//         card = target.closest('.book');
+
+//         let deleteBtn = target.closest('.deleteBtn');
+//         highlight(card);
+
+//         if (deleteBtn !== null) {
+//             e.preventDefault();
+//             bookTitle.textContent = card.dataset.title;
+//             setTimeout(() => {
+//                 deleteDialog.showModal();
+//             }, 300);
+//         }
+//     });
+
+//     confirmBtn.addEventListener('click', function (e) {
+//         deleteDialog.close();
+//         setTimeout(() => {
+//             window.location = target.href;
+//         }, 300);
+//     });
+//     cancelBtn.addEventListener('click', function (e) {
+//         deleteDialog.close();
+//         highlight(card);
+//     });
+// }

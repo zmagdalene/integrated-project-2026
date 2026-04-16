@@ -2,7 +2,10 @@
 require_once "./lib/config.php";
 require_once "./lib/global.php";
 $adminControls = require_once "./inc/admin_controls.php";
-$adminPopups = require_once "./inc/admin_popups.php";
+$adminData = require_once "./inc/admin_popups.php";
+$common = $adminData['common'];
+$adminPopups = $adminData['popups'];
+$default = $adminPopups['defaultDisplay'];
 
 try {
     $stories = Story::findAll($options = ['limit' => 3, 'offset' => 1]);
@@ -45,6 +48,61 @@ try {
         <?php require_once "./inc/flash_message.php"; ?>
     </div>
 
+    <dialog class="adminPopup" id="adminPopup">
+
+        <div class="head">
+            <h3><?= h($common['logo']) ?></h3>
+            <div class="exit">
+                <h4><?= h($common['exit']) ?></h4>
+            </div>
+            <p id="popupText"><?= h($default['text']) ?></p>
+        </div>
+
+        <div class="cards" id="popupCards">
+            <?php foreach ($default['cards'] as $type => $item) { ?>
+                <div class="card" data-type="<?= h($type) ?>">
+                    <i class="<?= h($item['icon']) ?>"></i>
+                    <h4><?= h($item['text']) ?></h4>
+                </div>
+            <?php } ?>
+        </div>
+
+        <i id="popupIcon"></i>
+
+        <div class="input" id="popupInput"></div>
+
+    </dialog>
+
+    <!-- <div class="adminPopup hidden" id="adminDisplay">
+
+
+    <dialog class="adminPopup hidden" id="adminDisplay">
+        <div class="head">
+            <h3>TFJ</h3>
+            <div class="exit">
+                <h4>X</h4>
+            </div>
+            <p>Please Enter Admin Password</p>
+        </div>
+        <i class="fa-solid fa-lock"></i>
+
+        <div>
+            <input type="text" value="" id="passwordInput">
+            <button id="adminConfirm">Confirm</button>
+        </div>
+    </dialog>
+
+    <dialog class="adminPopup hidden" id="noAdminDisplay">
+        <div class="head">
+            <h3>TFJ</h3>
+            <div class="exit">
+                <h4>X</h4>
+            </div>
+            <p>Please Contact TFJ@gmail.com for more info.</p>
+        </div>
+        <i class="fa-solid fa-paper-plane"></i>
+    </dialog>
+
     <div id="overlay" class="hidden">
 
         <div class="adminPopup hidden" id="adminDisplay">
@@ -74,9 +132,9 @@ try {
             <i class="fa-solid fa-paper-plane"></i>
         </div>
 
-    </div>
+    </div> -->
 
-    <div class="adminButton">
+    <div id="adminButton">
         <img src="assets/button.png" alt="adminButton">
     </div>
 
@@ -441,6 +499,10 @@ try {
 
             </div>
         </div>
+        <script>
+            const popupData = <?= json_encode($adminPopups) ?>;
+        </script>
+        <script src="js/functions.js"></script>
         <script src="js/admin.js"></script>
 </body>
 
