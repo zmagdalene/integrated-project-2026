@@ -2,6 +2,10 @@
 require_once './lib/config.php';
 require_once './lib/global.php';
 require_once './lib/session.php';
+$adminControls = require_once "./inc/admin_controls.php";
+$adminData = require_once "./inc/admin_popups.php";
+$common = $adminData['common'];
+$default = $adminData['popups']['default'];
 
 startSession();
 
@@ -23,12 +27,18 @@ try {
 </head>
 
 <body>
-    <?php require_once "./lib/navbar.php"; ?>
-
     <div class="container">
-        <div class="flash-message">
+        <div class="width-12 flash-message">
             <?php require_once "./inc/flash_message.php"; ?>
         </div>
+    </div>
+
+    <?php include './inc/deleteDialog.php' ?>
+    <?php include './inc/adminDialog.php' ?>
+
+    <div class="header">
+        <h1>THE FINANCE JOURNAL</h1>
+        <?php require_once "./lib/navbar.php"; ?>
     </div>
 
     <div class="container">
@@ -75,95 +85,45 @@ try {
 
                     <div class="selects">
 
-                        <div class="formRow authorRow">
-
-                            <div class="input inputSelect">
-                                <label for="author_id">Author:</label>
-                                <div>
-                                    <select name="author_id" id="author_id" required>
-                                        <option value="">---Select Author---</option>
-                                        <?php foreach ($authors as $a) { ?>
-                                            <option value="<?= h($a->id) ?>" <?= chosen('author_id', $a->id) ? 'selected' : '' ?>><?= h($a->first_name), " ", h($a->last_name) ?></option>
-                                        <?php } ?>
-                                    </select>
-                                    <p class="error"><?= error('author_id') ?></p>
-                                </div>
+                        <div class="input inputSelect">
+                            <label for="author_id">Author:</label>
+                            <div>
+                                <select name="author_id" id="author_id" required>
+                                    <option value="">---Select Author---</option>
+                                    <?php foreach ($authors as $a) { ?>
+                                        <option value="<?= h($a->id) ?>" <?= chosen('author_id', $a->id) ? 'selected' : '' ?>><?= h($a->first_name), " ", h($a->last_name) ?></option>
+                                    <?php } ?>
+                                </select>
+                                <p class="error"><?= error('author_id') ?></p>
                             </div>
-
-                            <div class="input textInput hidden">
-                                <label for="first_name">First Name:</label>
-                                <div>
-                                    <input type="text" id="first_name" name="first_name" value="<?= old('first_name') ?>" required>
-                                    <p class="error"><?= error('first_name') ?></p>
-                                </div>
-                            </div>
-
-                            <div class="input textInput hidden">
-                                <label for="last_name">Last Name:</label>
-                                <div>
-                                    <input type="text" id="last_name" name="last_name" value="<?= old('last_name') ?>" required>
-                                    <p class="error"><?= error('last_name') ?></p>
-                                </div>
-                            </div>
-
-                            <button type="button" class="button selectButton">New Author</button>
-
                         </div>
 
-                        <div class="formRow categoryRow">
+                    </div>
 
-                            <div class="input inputSelect">
-                                <label for="category_id">Category:</label>
-                                <div>
-                                    <select name="category_id" id="category_id" required>
-                                        <option value="">---Select Category---</option>
-                                        <?php foreach ($categories as $c) { ?>
-                                            <option value="<?= h($c->id) ?>" <?= chosen('category_id', $c->id) ? 'selected' : '' ?>><?= h($c->name) ?></option>
-                                        <?php } ?>
-                                    </select>
-                                    <p class="error"><?= error('category_id') ?></p>
-                                </div>
-                            </div>
-
-                            <div class="input textInput hidden">
-                                <label for="author_id">New Category:</label>
-                                <div>
-                                    <input type="text" id="category_id" name="category_id" value="<?= old('category_id') ?>" required>
-                                    <p class="error"><?= error('category_id') ?></p>
-                                </div>
-                            </div>
-
-                            <button type="button" class="button selectButton">New Category</button>
-
+                    <div class="input inputSelect">
+                        <label for="category_id">Category:</label>
+                        <div>
+                            <select name="category_id" id="category_id" required>
+                                <option value="">---Select Category---</option>
+                                <?php foreach ($categories as $c) { ?>
+                                    <option value="<?= h($c->id) ?>" <?= chosen('category_id', $c->id) ? 'selected' : '' ?>><?= h($c->name) ?></option>
+                                <?php } ?>
+                            </select>
+                            <p class="error"><?= error('category_id') ?></p>
                         </div>
+                    </div>
 
-                        <div class="formRow locationRow">
-
-                            <div class="input inputSelect">
-                                <label for="location_id">Location:</label>
-                                <div>
-                                    <select name="location_id" id="location_id" required>
-                                        <option value="">---Select Location---</option>
-                                        <?php foreach ($locations as $l) { ?>
-                                            <option value="<?= h($l->id) ?>" <?= chosen('location_id', $l->id) ? 'selected' : '' ?>><?= h($l->name) ?></option>
-                                        <?php } ?>
-                                    </select>
-                                    <p class="error"><?= error('location_id') ?></p>
-                                </div>
-                            </div>
-
-                            <div class="input textInput hidden">
-                                <label for="location_id">New Location:</label>
-                                <div>
-                                    <input type="text" id="location_id" name="location_id" value="<?= old('location_id') ?>" required>
-                                    <p class="error"><?= error('location_id') ?></p>
-                                </div>
-                            </div>
-
-                            <button type="button" class="button selectButton">New Location</button>
-
+                    <div class="input inputSelect">
+                        <label for="location_id">Location:</label>
+                        <div>
+                            <select name="location_id" id="location_id" required>
+                                <option value="">---Select Location---</option>
+                                <?php foreach ($locations as $l) { ?>
+                                    <option value="<?= h($l->id) ?>" <?= chosen('location_id', $l->id) ? 'selected' : '' ?>><?= h($l->name) ?></option>
+                                <?php } ?>
+                            </select>
+                            <p class="error"><?= error('location_id') ?></p>
                         </div>
-
                     </div>
 
                     <div class="input">
@@ -181,8 +141,16 @@ try {
             </div>
         </div>
     </div>
+
+    <div class="gap"></div>
+
+    <script>
+        const popupData = <?= json_encode($adminData) ?>;
+    </script>
     <script src="js/functions.js"></script>
     <script src="js/crud.js"></script>
+    <script src="js/admin.js"></script>
+    <script src="js/delete.js"></script>
 </body>
 
 </html>

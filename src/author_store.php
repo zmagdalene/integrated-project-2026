@@ -92,7 +92,7 @@ try {
     setFlashMessage('success', 'Author stored successfully.');
 
     // Redirect to story details page
-    redirect('author_manage.php?id=' . $author->id);
+    redirect('author_create.php?id=' . $author->id);
 } catch (Exception $e) {
     // Error - clean up uploaded image
     // if (isset($imageFilename) && $imageFilename) {
@@ -106,5 +106,5 @@ try {
     setFormData($data);
     setFormErrors($errors);
 
-    redirect('author_manage.php');
+    redirect('author_create.php');
 }

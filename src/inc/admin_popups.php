@@ -40,8 +40,8 @@ return [
             ],
             "manageAuthors" => [
                 "icon" => "fa-solid fa-lock-open",
-                "text" => "Manage Authors",
-                "href" => "author_manage.php"
+                "text" => "Create Author",
+                "href" => "author_create.php"
             ],
             "createCategory" => [
                 "icon" => "fa-solid fa-lock",

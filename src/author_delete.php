@@ -56,7 +56,7 @@ try {
     setFlashMessage('success', 'Author deleted successfully.');
 
     // Redirect to author details page
-    redirect('author_manage.php');
+    redirect('author_create.php');
 } catch (Exception $e) {
     // Set error flash message
     setFlashMessage('error', 'Error: ' . $e->getMessage());
@@ -67,8 +67,8 @@ try {
 
     // Redirect back to view page if there is an ID; otherwise, go to index page
     if (isset($data['id']) && $data['id']) {
-        redirect('author_manage.php?id=' . $data['id']);
+        redirect('author_create.php?id=' . $data['id']);
     } else {
-        redirect('author_manage.php');
+        redirect('author_create.php');
     }
 }

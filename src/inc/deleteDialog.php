@@ -1,7 +1,7 @@
 <dialog id="deleteDlg" class="deletePopup">
 
-    <h2>Are you sure you want to delete this News Story?</h2>
-    <h1 id="storyHeadline"></h1>
+    <h4>Are you sure you want to delete this News Story?</h4>
+    <h3 id="dlgStoryHeadline"></h3>
     <p>This action is permanent and cannot be undone.</p>
 
     <div class="buttons">

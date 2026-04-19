@@ -2,6 +2,10 @@
 require_once './lib/config.php';
 require_once './lib/global.php';
 require_once './lib/session.php';
+$adminControls = require_once "./inc/admin_controls.php";
+$adminData = require_once "./inc/admin_popups.php";
+$common = $adminData['common'];
+$default = $adminData['popups']['default'];
 
 startSession();
 
@@ -21,12 +25,18 @@ try {
 </head>
 
 <body>
-    <?php require_once "./lib/navbar.php"; ?>
-
     <div class="container">
         <div class="width-12 flash-message">
             <?php require_once "./inc/flash_message.php"; ?>
         </div>
+    </div>
+
+    <?php include './inc/deleteDialog.php' ?>
+    <?php include './inc/adminDialog.php' ?>
+
+    <div class="header">
+        <h1>THE FINANCE JOURNAL</h1>
+        <?php require_once "./lib/navbar.php"; ?>
     </div>
 
     <div class="container">
@@ -55,6 +65,16 @@ try {
             </div>
         </div>
     </div>
+
+    <div class="gap"></div>
+
+    <script>
+        const popupData = <?= json_encode($adminData) ?>;
+    </script>
+    <script src="js/functions.js"></script>
+    <script src="js/crud.js"></script>
+    <script src="js/admin.js"></script>
+    <script src="js/delete.js"></script>
 </body>
 
 </html>

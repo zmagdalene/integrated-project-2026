@@ -4,7 +4,7 @@ function visibility(element) {
 
 function visibilityFlex(element) {
     element.classList.toggle('hidden');
-    
+
 }
 
 function hide(element) {

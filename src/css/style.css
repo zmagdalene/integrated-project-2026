@@ -61,6 +61,10 @@ a {
     outline: none;
 }
 
+a:hover {
+    text-decoration: underline;
+}
+
 p {
     color: #505050;
     font-family: "Inria Serif", sans-serif;
@@ -224,35 +228,9 @@ dialog {
     transform: translateY(-5%);
 }
 
-/* deletePopup */
-/* dialog {
-    background-color: var(#ffffff);
-    border: none;
-    border-radius: 12px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-    padding: 20px;
-    width: 500px;
-    height: 195px;
-    text-align: center;
-    /* justify-content: space-between;
-	flex-flow: column wrap;
-} */
-
-/* dialog h2 {
-    color: var(--txt);
-    font-size: 23px;
-    line-height: normal;
-}
-
-#dlgBookTitle {
-    font-family: "IBM Plex Serif";
-    font-weight: 300;
-    color: var(--title);
-}
-
-dialog p {
+#deleteDlg p {
     color: #b00020;
-} */
+}
 
 .largeBtn {
     border: 1px solid;
@@ -295,8 +273,24 @@ dialog p {
     display: none !important;
 }
 
+.flex {
+    display: flex;
+    gap: 10px;
+}
+
+.sticky {
+    position: sticky;
+    top: 7%;
+}
+
 .underline {
     text-decoration: underline;
+}
+
+.highlight {
+    border-color: #b00020;
+    box-shadow: 0 0 0 2px rgba(0, 102, 204, 0.2);
+    transition: 0.5ms;
 }
 
 /* title Styles */
@@ -314,6 +308,7 @@ dialog p {
     width: 100%;
     margin-bottom: 20px;
     padding: 10px 15px;
+    text-transform: uppercase;
     display: flex;
     align-items: center;
 }
@@ -409,24 +404,24 @@ h6.author {
     padding-top: 6px;
 }
 
-/* personalFinance */
+/* moreNews */
 
-.personalFinance .trending .story {
+.moreNews .trending .story {
     gap: 10px;
     min-height: 93px;
     display: flex;
 }
 
-.personalFinance .pic {
+.moreNews .pic {
     flex: 1;
 }
 
-.personalFinance .textHolder {
+.moreNews .textHolder {
     flex: 4;
 }
 
 /* admin mode*/
-#adminMode {
+.adminMode {
     display: flex;
     gap: 20px;
 }
@@ -472,9 +467,6 @@ a.edit:hover {
 }
 
 /* create/update */
-
-.selects {}
-
 .inputForm {
     display: flex;
     flex-flow: column wrap;

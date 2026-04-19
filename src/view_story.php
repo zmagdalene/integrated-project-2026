@@ -1,6 +1,10 @@
 <?php
 require_once "./lib/config.php";
 require_once "./lib/global.php";
+$adminControls = require_once "./inc/admin_controls.php";
+$adminData = require_once "./inc/admin_popups.php";
+$common = $adminData['common'];
+$default = $adminData['popups']['default'];
 
 try {
     if (!isset($_GET["id"])) {
@@ -12,7 +16,8 @@ try {
         throw new Exception("Story not found.");
     }
     $category = Category::findById($s->category_id);
-    $related_stories = Story::findByCategory($category->id, $options = array('limit' => 3, 'order_by' => 'updated_at', 'order' => 'DESC'));
+    $trendingStories = Story::findAll($options = ['order_by' => 'created_at', 'limit' => 6, 'offset' => 1]);
+    $related_stories = Story::findByCategory($category->id, $options = array('order_by' => 'updated_at', 'order' => 'DESC'));
 } catch (Exception $e) {
     echo $e->getMessage();
     exit();
@@ -26,7 +31,15 @@ try {
 </head>
 
 <body>
-    <?php require_once "./inc/flash_message.php"; ?>
+    <div class="container">
+        <div class="width-12 flash-message">
+            <?php require_once "./inc/flash_message.php"; ?>
+        </div>
+    </div>
+
+    <?php include './inc/deleteDialog.php' ?>
+    <?php include './inc/adminDialog.php' ?>
+
     <div class="header">
         <h1>THE FINANCE JOURNAL</h1>
         <?php require_once "./lib/navbar.php"; ?>
@@ -36,15 +49,16 @@ try {
 
     <div class="container">
 
-        <div class="width-9">
+        <div class="width-8">
             <p><?= Category::findById($s->category_id)->name ?></p>
             <h1><?= $s->headline ?></h1>
-            <div class="dates">
+            <p>Location: <?= Location::findById($s->location_id)->name ?></p>
+            <?php $author = Author::findById($s->author_id); ?>
+            <p>Author: <?= $author->first_name . " " . $author->last_name ?></p>
+            <div class="dates flex">
                 <p>Published: <?= $s->created_at ?></p>
                 <p>Updated: <?= $s->updated_at ?></p>
             </div>
-            <?php $author = Author::findById($s->author_id); ?>
-            <p>Author: <?= $author->first_name . " " . $author->last_name ?></p>
             <h3><?= $s->subheadline ?></h3>
 
             <img src="<?= h($s->img_url) ?>" />
@@ -53,26 +67,98 @@ try {
                 <p><?= $s->article ?></p>
             </div>
 
-            <p>Location: <?= Location::findById($s->location_id)->name ?></p>
+            <?php $story = $s;
+            include "./inc/admin_buttons.php" ?>
         </div>
-        <div class="width-12">
-            <h2>Related Stories</h2>
-            <?php foreach ($related_stories as $rs) { ?>
-                <?php if ($rs->id == $s->id) {
-                    continue;
-                } ?>
-                <div>
-                    <h3><a href="view_story.php?id=<?= $rs->id ?>"><?= $rs->headline ?></a></h3>
-                    <?php $rs_author = Author::findById($rs->author_id); ?>
-                    <p>Author: <?= $rs_author->first_name . " " . $rs_author->last_name ?></p>
-                    <!-- <p>Category: <?= Category::findById($rs->category_id)->name ?></p> -->
-                    <!-- <p>Location: <?= Location::findById($rs->location_id)->name ?></p> -->
-                    <!-- <p>Date created: <?= $rs->created_at ?></p> -->
-                    <p>Last modified: <?= $rs->updated_at ?></p>
-                </div>
-            <?php } ?>
+
+        <div class="width-1"></div>
+
+        <div class="width-2">
+            <div class="trending sticky">
+                <h4>Trending</h4>
+
+
+                <?php foreach ($trendingStories as $s) { ?>
+
+                    <div class="story">
+
+                        <a href="view_story.php?id=<?= h($s->id) ?>">
+
+                            <div class="category">
+                                <?php $category = Category::findById($s->category_id) ?>
+                                <h6 class="red"><?= $category->name ?></h6>
+                                <?php $author = Author::findById($s->author_id) ?>
+                                <h6>/ <?= $author->first_name . " " . $author->last_name ?></h6>
+                            </div>
+
+                            <h5><?= $s->short_headline ?></h5>
+                            <p class="time">2h ago</p>
+
+                        </a>
+                    </div>
+
+                    <?php $story = $s;
+                    include "./inc/admin_buttons.php" ?>
+
+                <?php } ?>
+
+            </div>
         </div>
     </div>
+
+    <div class="container moreNews">
+
+        <div class="width-12 greyLine"></div>
+
+        <div class="width-12 title">
+            <h1>RELATED STORIES</h1>
+        </div>
+
+        <div class="width-12">
+            <div class="trending story">
+
+                <?php foreach ($related_stories as $s) { ?>
+
+                    <a href="view_story.php?id=<?= h($s->id) ?>">
+                        <div class="story">
+                            <div class="pic">
+                                <img src="/<?= $s->img_url ?>">
+                            </div>
+                            <div class="textHolder">
+
+                                <div class="category">
+                                    <?php $category = Category::findById($s->category_id) ?>
+                                    <h6 class="red"><?= $category->name ?></h6>
+                                    <?php $author = Author::findById($s->author_id) ?>
+                                    <h6>/ <?= $author->first_name . " " . $author->last_name ?></h6>
+                                </div>
+
+                                <h5><?= $s->headline ?></h5>
+                                <p class="time">2h ago</p>
+
+                            </div>
+
+                        </div>
+                    </a>
+
+                    <?php $story = $s;
+                    include "./inc/admin_buttons.php" ?>
+
+                <?php } ?>
+
+            </div>
+        </div>
+    </div>
+
+    <?php include "./inc/footer.php" ?>
+
+    <script>
+        const popupData = <?= json_encode($adminData) ?>;
+    </script>
+    <script src="js/functions.js"></script>
+    <script src="js/admin.js"></script>
+    <script src="js/delete.js"></script>
+
 </body>
 
 </html>

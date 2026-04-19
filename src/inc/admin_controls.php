@@ -6,7 +6,7 @@ return [
         "text" => "Edit Story"
     ],
     "delete" => [
-        "url" => "story_edit.php",
+        "url" => "story_delete.php",
         "icon" => "fa-solid fa-trash-can",
         "text" => "Delete Story"
     ]
